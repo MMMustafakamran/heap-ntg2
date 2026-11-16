@@ -8,6 +8,7 @@ import { type ActionContext, type PageActionHandler, type PageRecordConfig } fro
 import { runStandardAction, sendPrompt } from '../core/actions';
 import { sleep } from '../core/overlays/cursor';
 import { type DocEvidence, showFinding } from './doc-evidence';
+import { registerDocEvidence } from '../core/doc-evidence';
 import { glideClick, glideTo } from './glide-click';
 import { checkpoint, mark, probeText } from '../core/timeline';
 
@@ -29,11 +30,10 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
   'programmatic-control': {
     evidence: [{ text: 'def aimock_headers() -> dict[str, str]:', caption: '_common.py is showcase helpers, no runnable agent' }],
     note: [
-      'page only gives a run agent button and a stop button for an agent called sales',
-      'the only backend code is _common.py, aimock_headers MODEL WORKSPACE SLUG never defined or imported',
-      'no agent, no app, nothing registers sales anywhere',
-      'so u have to guess the backend, i pointed sales at the quickstart agent just to run it',
-      'and the button shows no output either so u cant see what the run did',
+      "page says run agent drives the sales agent from code",
+      "clicked run, it goes thru but the button shows no output so u cant see what the run did",
+      "the only backend code is _common.py and its model workspace slug names are never defined",
+      "nothing registers sales so i pointed it at the quickstart agent myself",
     ].join('\n'),
     demo: async (page, _config, _root, ctx) => {
       const run = page.getByRole('button', { name: 'Run agent' });
@@ -56,11 +56,10 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       { text: 'parameters: z.object({ city: z.string() }),', caption: 'card reads city, backend arg is location' },
     ],
     note: [
-      'backend snippet does return build with SYSTEM_PROMPT and TOOLS',
-      'build SYSTEM_PROMPT search_flights get_stock_price roll_d20 are never shown on the page',
-      'so as written its a nameerror, i had to pull the rest from the showcase to run it',
-      'and even then the card reads city but the backend get_weather takes location',
-      'so the weather card comes up with no city name in it',
+      "page says the weather tool call renders as a card",
+      "asked weather in tokyo, card shows up but no city name in it",
+      "backend uses build, system_prompt and 3 tools that are never shown, so it nameerrors as written and i pulled them from the showcase",
+      "card reads city but get_weather takes location, so the names dont match",
     ].join('\n'),
   },
   // FINDINGS.md #6 (doc-only clip: nothing on the page runs in Vue)
@@ -70,11 +69,10 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       { text: 'export function useAgenticChatSuggestions() {', caption: 'useConfigureSuggestions used with no import (agents._common in chat.py is behind the Code tab)' },
     ],
     note: [
-      'this is the vue chat components page but the only code is react next.js',
-      'page.tsx with CopilotKit runtimeUrl, nothing vue, no template no CopilotKitProvider',
-      'useConfigureSuggestions used with no import',
-      'and the python chat.py imports build from agents._common which is never shown',
-      'so theres nothing here a vue dev can actually build',
+      "vue chat components page should give vue chat code",
+      "theres nothing to run, the only code is a react next.js page.tsx with no vue template and no copilotkit provider",
+      "useconfiguresuggestions has no import and chat.py imports agents._common which is never shown",
+      "so there is nothing to build the vue page from",
     ].join('\n'),
     demo: async () => {},
   },
@@ -85,11 +83,10 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       { text: "The agent sees them on every turn through the runtime's context injection", caption: 'same promise' },
     ],
     note: [
-      'page says useAgentContext values reach the agent on every turn',
-      'set workspace to northstar like the doc, asked which workspace am i in',
-      'agent said C:/srv/agents/w1, it never saw northstar',
-      'the antigravity adapter only passes app context with experimental_app_context=True on the agent',
-      'page never mentions that and shows no backend code at all',
+      "page says useagentcontext values reach the agent on every turn",
+      "set workspace to northstar, asked which workspace, the agent answered with some server path and not northstar",
+      "the antigravity adapter only passes the context with experimental_app_context=true and the page never mentions it",
+      "no backend is shown at all, so the agent never gets the context",
     ].join('\n'),
   },
   // FINDINGS.md #42
@@ -100,10 +97,10 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       { text: 'import MeetingChat from', caption: 'MeetingChat is never shown' },
     ],
     note: [
-      'page says antigravity cant pause mid tool so use useHumanInTheLoop',
-      'but the frontend and backend sections for that are just text, no code',
-      'only code is a useInterrupt approval panel and App.vue importing MeetingChat which is never shown',
-      'got the approve card only by copying the backend from the hitl page and guessing MeetingChat',
+      "page says antigravity cant pause mid tool so use usehumanintheloop",
+      "the frontend and backend sections are just text, no code for it at all",
+      "the only code is a useinterrupt panel and an app.vue importing meetingchat which is never shown",
+      "i got the approve card only by copying the backend from the hitl page and guessing meetingchat",
     ].join('\n'),
     demo: async (page, config, _root, ctx) => {
       if (!(await promptAndWaitFor(page, config, /Pick a time/, 60000))) ctx.fail('No approval panel showed up');
@@ -116,10 +113,10 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       { text: 'Register a useHumanInTheLoop tool with a Vue render component', caption: 'the primitives section is prose only' },
     ],
     note: [
-      'only code on the page is App.vue importing HeadlessInterruptPanel.vue',
-      'that component is never shown anywhere',
-      'vite fails, failed to resolve import ./components/HeadlessInterruptPanel.vue',
-      'the primitives part is only text so theres nothing to build it from, page is blank',
+      "page says u can build ur own interrupt ui with the headless primitives",
+      "the page is blank, vite fails to resolve the import of headlessinterruptpanel.vue",
+      "that component is never shown and the primitives part is only text",
+      "so there is nothing on the page to build the panel from",
     ].join('\n'),
     demo: async (page, _config, _root, ctx) => {
       await sleep(6000);
@@ -132,10 +129,10 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
   webmcp: {
     evidence: [{ text: 'const orders = await searchOrders(status);', caption: 'searchOrders is never defined' }],
     note: [
-      'OrderSearch.vue calls searchOrders but the page never defines or imports it',
-      'asked the agent to use the searchOrders tool to find my open orders',
-      'chat never replies, just sits there',
-      'webmcp side also needs a chrome flag so nothing else to try from the page',
+      "page says the agent can call ur searchorders tool",
+      "asked it to find my open orders, chat never replies",
+      "ordersearch.vue calls searchorders but its never defined or imported, and the page shows only that component",
+      "so the tool cant run as written",
     ].join('\n'),
     demo: async (page, config, _root, ctx) => {
       await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
@@ -156,14 +153,16 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       if (!(await promptAndWaitFor(page, config, /scatter|Rayleigh|wavelength/i, 120000))) ctx.fail('The supervisor never replied');
     },
     note: [
-      'delegation log section says the frontend renders the delegations slot but has no code at all',
-      'install is pip install ag-ui-antigravity google-antigravity, subagents.py imports httpx',
-      'so the server crashes, modulenotfound no module named httpx',
-      'also imports agents._common which is never shown',
-      'with httpx and the showcase _common it replies but theres no delegation log',
+      "page says the frontend shows a delegation log of the sub agents",
+      "with my fixes it replies but theres no delegation log anywhere",
+      "as written server crashes,modulenotfound no module named httpx,install step misses it",
+      "agents._common never shown and the log section has no code",
     ].join('\n'),
   },
 };
+
+// Each finding's doc evidence is highlighted in the doc step (before the IDE), not after the demo.
+registerDocEvidence(Object.fromEntries(Object.entries(NEW_FINDINGS).map(([id, f]) => [id, f.evidence])));
 
 export const runNewFindingAction: PageActionHandler = async (page, config, root, ctx) => {
   const f = NEW_FINDINGS[config.id];

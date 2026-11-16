@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the agent never sees the context, because the Antigravity adapter needs experimental app context turned on, and the page never says that.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 11.471,
+ "file": "5ec3aeb46f6d4f2fa4ec56aa45d21cde.mp3",
+ "clip": "ANTIGRAVITY-vue-06-SharedStateReadonly",
+ "at": "notepad"
+}

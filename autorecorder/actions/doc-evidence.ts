@@ -239,7 +239,7 @@ export async function showFinding(
   note: string | undefined,
   fileName = `finding-${config.id}.txt`,
 ): Promise<void> {
-  await showDocEvidence(page, config, items).catch((e) => console.warn(`   ⚠️ Doc evidence step failed: ${String(e).slice(0, 120)}`));
+  // The doc evidence is highlighted in the doc step now (core/doc-evidence, registerDocEvidence); not again here.
   if (!note) return;
   mark('notepad');
   await openNotepad(page, fileName);

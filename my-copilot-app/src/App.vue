@@ -16,6 +16,7 @@ import { defineAsyncComponent } from "vue"; // V4
 const v4 = (l: () => Promise<any>) => defineAsyncComponent(l); // V4
 const routes: Record<string, unknown> = {
   "/": FrontendToolsApp,
+  "/quickstart": v4(() => import("./App.quickstart.vue")), // HARNESS: the quickstart demo renders the file its IDE tab shows, not the Frontend Tools root (review 2026-11-16)
   "/hitl": v4(() => import("./pages/HitlApp.vue")), // V4
   "/use-interrupt": v4(() => import("./pages/UseInterruptApp.vue")), // V4
   "/headless-interrupts": v4(() => import("./pages/HeadlessInterruptApp.vue")), // V4

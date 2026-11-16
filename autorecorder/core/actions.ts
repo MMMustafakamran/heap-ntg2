@@ -110,10 +110,22 @@ export async function waitForAgentResponseCompletion(
   const consoleSince = consoleMark(page);
   const baseCount = initialMessageCount ?? 0;
   const observed: ReplyObservation = { startedAfterMs: 0, chars: 0, streamTimedOut: false };
+  // A reply can be only a generative-UI card or frame, with no assistant text (AG2/Antigravity
+  // generative-UI pages, 2026-11-16): waiting for text alone sat out the whole start window on a
+  // card that was already on screen. Surfaces/frames present before the prompt don't count.
+  const uiBase = await page
+    .evaluate((surfaceSel) => document.querySelectorAll(surfaceSel).length + document.querySelectorAll('iframe').length, SURFACE_SELECTOR)
+    .catch(() => 0);
 
   while (Date.now() - startTime < startTimeoutMs) {
     const status = await page
-      .evaluate(({ bCount, sel }) => {
+      .evaluate(({ bCount, sel, surfaceSel, uiBase }) => {
+        // Inline only: a named helper here becomes __name(...) under tsx and throws in the page.
+        const ui = Array.from(document.querySelectorAll(`${surfaceSel}, iframe`)).filter((el) => {
+          const r = el.getBoundingClientRect();
+          return r.width > 40 && r.height > 20 && getComputedStyle(el).visibility !== 'hidden';
+        });
+        if (ui.length > uiBase) return { started: true, len: 0 };
         const msgs = document.querySelectorAll(sel);
         if (msgs.length === 0) return { started: false, len: 0 };
         // If initialMessageCount was given, ensure we are looking at a new message
@@ -130,7 +142,7 @@ export async function waitForAgentResponseCompletion(
           if (t) { txt = t; break; }
         }
         return { started: txt.length > 2, len: txt.length };
-      }, { bCount: baseCount, sel: messageSelector })
+      }, { bCount: baseCount, sel: messageSelector, surfaceSel: SURFACE_SELECTOR, uiBase })
       .catch(() => ({ started: false, len: 0 }));
 
     if (status.started) {
@@ -203,7 +215,9 @@ export async function waitForAgentResponseCompletion(
 
       // The count is part of the compared value, so a new message arriving
       // restarts the stability window instead of looking like "no change".
-      if (currentText.length > 0 && signature === previousSignature) {
+      // A card-only reply has no text; its surface/frame signature is what must hold still.
+      const hasContent = currentText.length > 0 || /^[1-9]|\/[1-9]/.test(snap.ui);
+      if (hasContent && signature === previousSignature) {
         stableCount++;
         // Stable for 4 consecutive checks (1.6s) and the chat no longer running: finished. A run
         // flag that never clears (seen on broken agents) is not waited out forever: after

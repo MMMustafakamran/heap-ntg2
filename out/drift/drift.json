@@ -1,0 +1,297 @@
+{
+  "checkedAt": "2026-11-11T12:18:08.124Z",
+  "root": "vue/google-antigravity",
+  "state": "clean",
+  "unknown": [],
+  "pages": [
+    {
+      "docPath": "",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity",
+      "tracked": false,
+      "state": "same"
+    },
+    {
+      "docPath": "agentic-chat-ui",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/agentic-chat-ui",
+      "tracked": true,
+      "active": false,
+      "state": "same"
+    },
+    {
+      "docPath": "build-with-agents",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/build-with-agents",
+      "tracked": false,
+      "state": "same"
+    },
+    {
+      "docPath": "community-frameworks",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/community-frameworks",
+      "tracked": false,
+      "state": "same"
+    },
+    {
+      "docPath": "custom-look-and-feel/headless-ui",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/custom-look-and-feel/headless-ui",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "custom-look-and-feel/slots",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/custom-look-and-feel/slots",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "frontend-tools",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/frontend-tools",
+      "tracked": true,
+      "active": true,
+      "state": "same"
+    },
+    {
+      "docPath": "generative-ui/mcp-apps",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/generative-ui/mcp-apps",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "generative-ui/state-rendering",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/generative-ui/state-rendering",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "generative-ui/tool-based",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/generative-ui/tool-based",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "generative-ui/tool-rendering",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/generative-ui/tool-rendering",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "headless-threads",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/headless-threads",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "human-in-the-loop",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/human-in-the-loop",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "human-in-the-loop/governed-actions",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/human-in-the-loop/governed-actions",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "human-in-the-loop/headless",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/human-in-the-loop/headless",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "human-in-the-loop/useInterrupt",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/human-in-the-loop/useInterrupt",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "inspector",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/inspector",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "learning",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/learning",
+      "tracked": false,
+      "state": "same"
+    },
+    {
+      "docPath": "multi-agent/subagents",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/multi-agent/subagents",
+      "tracked": true,
+      "active": true,
+      "state": "same"
+    },
+    {
+      "docPath": "prebuilt-components",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/prebuilt-components",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "prebuilt-components/copilot-threads-drawer",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/prebuilt-components/copilot-threads-drawer",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "programmatic-control",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/programmatic-control",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "quickstart",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/quickstart",
+      "tracked": true,
+      "active": true,
+      "state": "same",
+      "redirectsTo": "/vue/google-antigravity"
+    },
+    {
+      "docPath": "shared-state",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/shared-state",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "shared-state/agent-readonly",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/shared-state/agent-readonly",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "shared-state/rendering-in-app",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/shared-state/rendering-in-app",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "shared-state/streaming",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/shared-state/streaming",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "using-these-docs",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/using-these-docs",
+      "tracked": false,
+      "state": "same"
+    },
+    {
+      "docPath": "webmcp",
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/webmcp",
+      "tracked": true,
+      "active": true,
+      "state": "same"
+    }
+  ],
+  "sidebar": {
+    "added": [],
+    "removed": [],
+    "renamed": []
+  },
+  "reach": [],
+  "newPages": [],
+  "deadLinks": [
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/generative-ui/tool-rendering",
+      "how": "linked from /vue/google-antigravity/generative-ui/tool-based, /vue/google-antigravity/concepts/which-hook"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/prebuilt-components/copilot-threads-drawer",
+      "how": "linked from /vue/google-antigravity, /vue/google-antigravity/headless-threads"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/human-in-the-loop",
+      "how": "linked from /vue/google-antigravity/generative-ui/tool-based, /vue/google-antigravity/concepts/which-hook"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/threads-lifecycle",
+      "how": "linked from /vue/google-antigravity/prebuilt-components/copilot-threads-drawer, /vue/google-antigravity/headless-threads"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/custom-look-and-feel/css",
+      "how": "linked from /vue/google-antigravity/custom-look-and-feel/headless-ui"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/custom-look-and-feel/slots",
+      "how": "linked from /vue/google-antigravity/custom-look-and-feel/headless-ui, /vue/google-antigravity/concepts/which-hook"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/human-in-the-loop/useInterrupt",
+      "how": "linked from /vue/google-antigravity/human-in-the-loop"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/react-native",
+      "how": "linked from /vue/google-antigravity/inspector"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/human-in-the-loop/headless",
+      "how": "linked from /vue/google-antigravity/human-in-the-loop"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/prebuilt-components/chat-controls",
+      "how": "linked from /vue/google-antigravity/prebuilt-components"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/AG-UI-Streams",
+      "how": "linked from /vue/google-antigravity, /vue/google-antigravity/prebuilt-components/copilot-threads-drawer"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/prebuilt-components/chat",
+      "how": "linked from /vue/google-antigravity/prebuilt-components"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/prebuilt-components/popup",
+      "how": "linked from /vue/google-antigravity/prebuilt-components"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/prebuilt-components/sidebar",
+      "how": "linked from /vue/google-antigravity/prebuilt-components"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/headless-threads",
+      "how": "linked from /vue/google-antigravity/prebuilt-components/copilot-threads-drawer, /vue/google-antigravity/threads-lifecycle"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/shared-state/streaming",
+      "how": "linked from /vue/google-antigravity/shared-state, /vue/google-antigravity/shared-state/rendering-in-app, /vue/google-antigravity/shared-state/agent-readonly"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/shared-state/rendering-in-app",
+      "how": "linked from /vue/google-antigravity/shared-state"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/shared-state/agent-readonly",
+      "how": "linked from /vue/google-antigravity/shared-state, /vue/google-antigravity/shared-state/rendering-in-app, /vue/google-antigravity/shared-state/streaming"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/shared-state",
+      "how": "linked from /vue/google-antigravity/shared-state/rendering-in-app, /vue/google-antigravity/shared-state/streaming, /vue/google-antigravity/shared-state/agent-readonly"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/vue/google-antigravity/vue/custom-look-and-feel/headless-ui",
+      "how": "linked from /vue/google-antigravity/programmatic-control"
+    }
+  ],
+  "held": []
+}

@@ -1,0 +1,9 @@
+{
+ "text": "So this is the problem, umm, the backend returns build with a prompt and tools, and none of those are shown.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 7.57,
+ "file": "0a09b1decd089527bd692ceeeda071e2.mp3",
+ "clip": "ANTIGRAVITY-vue-15-ToolRendering",
+ "at": "evidence"
+}

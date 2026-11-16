@@ -3,35 +3,35 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the use interrupt page in the CopilotKit docs, for Vue with Google Antigravity, and I have implemented this page in my project."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, umm, and this is the exact code from the doc."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo."
-  },
-  {
-   "at": "action",
-   "text": "I asked it to schedule a meeting about the roadmap. The approve card shows up, but uh, only because of code I had to bring in from other pages."
+   "text": "Ok so this is the use interrupt page for Vue with Google Antigravity, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "So the page says Antigravity can't pause a run mid tool, so use human in the loop instead."
+   "text": "So this is the problem, the page says Antigravity can't pause mid tool, so use human in the loop instead."
   },
   {
    "at": "evidence#2",
-   "text": "But the frontend and backend sections for that are just text, umm, no code."
+   "text": "But the frontend and backend sections for that, umm, have no code."
   },
   {
    "at": "evidence#3",
    "text": "And the app imports meeting chat, which is never shown."
   },
   {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "+",
+   "text": "This part wasn't on the page, the agent with the meeting tool, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. Scheduling a meeting should show an approve card, and it only shows because of code from other pages."
+  },
+  {
    "at": "notepad",
-   "text": "So the only code is a use interrupt panel, and an app file importing a component that doesn't exist on the page. I got the card only by copying the backend from the human in the loop page, and guessing meeting chat."
+   "text": "So basically, the page points you to human in the loop but gives no code for it, so you have to guess the whole thing."
   },
   {
    "at": "+",

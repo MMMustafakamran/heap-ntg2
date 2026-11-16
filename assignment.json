@@ -272,7 +272,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-10-ProgrammaticControl",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-vue-10-ProgrammaticControl.json"
     }
    ],
    "review": {
@@ -411,7 +411,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-15-ToolRendering",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-vue-15-ToolRendering.json"
     }
    ],
    "review": {
@@ -585,7 +585,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-06-SharedStateReadonly",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-vue-06-SharedStateReadonly.json"
     }
    ],
    "review": {
@@ -651,7 +651,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-19-UseInterrupt",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-vue-19-UseInterrupt.json"
     }
    ],
    "review": {
@@ -682,7 +682,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-20-HeadlessInterrupts",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-vue-20-HeadlessInterrupts.json"
     }
    ],
    "review": {
@@ -744,7 +744,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-22-WebMcp",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-vue-22-WebMcp.json"
     }
    ],
    "review": {
@@ -775,7 +775,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-23-SubAgents",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-vue-23-SubAgents.json"
     }
    ],
    "review": {
