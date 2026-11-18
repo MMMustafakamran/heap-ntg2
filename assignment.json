@@ -259,10 +259,12 @@
    "child": true,
    "docPath": "prebuilt-components/copilot-threads-drawer",
    "reachable": "sidebar",
-   "status": "N/A",
-   "findings": [],
+   "status": "✅",
+   "findings": [
+    48
+   ],
    "notes": [
-    "Note: needs the CopilotKit Intelligence platform (threads); without it the drawer stays on \"Loading threads...\"."
+    "Note: the page shows no runtime code for Intelligence and agent-id=\"support\" is never registered (added in the harness)."
    ],
    "block": null,
    "links": [],
@@ -281,12 +283,13 @@
    "child": true,
    "docPath": "headless-threads",
    "reachable": "sidebar",
-   "status": "N/A",
+   "status": "✅",
    "findings": [
-    17
+    17,
+    49
    ],
    "notes": [
-    "Note: needs the CopilotKit Intelligence platform (threads)."
+    "Note: server.ts uses agent and verifyAppSession without defining them and registers only default, while the page uses agent-id=\"my-agent\" (filled in by the harness)."
    ],
    "block": null,
    "links": [],
