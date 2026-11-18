@@ -4,15 +4,15 @@
  "repo": "Antigravity-vue",
  "docBase": "https://docs.copilotkit.ai/vue/google-antigravity/",
  "versions": {
-  "@copilotkit/vue": "1.88.0",
-  "@copilotkit/runtime": "1.88.0",
-  "vue": "3.5.44",
-  "vite": "8.3.5",
+  "@copilotkit/vue": "1.89.0",
+  "@copilotkit/runtime": "1.89.0",
+  "vue": "3.5.45",
+  "vite": "8.3.8",
   "tsx": "4.23.15"
  },
  "testedContext": {
   "os": "Microsoft Windows 11 Pro",
-  "packageManager": "npm 11 (Node 26.7.0)"
+  "packageManager": "npm 12 (Node 26.7.0)"
  },
  "report": {
   "style": "status",
@@ -137,13 +137,13 @@
    "group": null,
    "child": false,
    "docPath": "quickstart",
-   "reachable": "sidebar",
+   "reachable": "in-content",
    "status": "❌",
    "findings": [
     9
    ],
    "notes": [
-    "Issue: the Vue quickstart URL shows the Antigravity landing page with Next.js route code; no Vue steps, and the embedded demo is a 404."
+    "Issue: the Vue quickstart is the generic Vue + BuiltInAgent page; the only runtime registers CopilotKit's own OpenAI agent and nothing connects an Antigravity agent (no backend, no ag-ui-antigravity, no HttpAgent). Its callout tells agent owners to use their framework's quickstart, which is this page."
    ],
    "block": null,
    "links": [
@@ -242,37 +242,6 @@
      "clip": "ANTIGRAVITY-vue-09-HeadlessUi",
      "loom": null,
      "narration": null
-    }
-   ],
-   "review": {
-    "verdict": null,
-    "approvedAt": null,
-    "by": null
-   },
-   "added": "2026-11-10"
-  },
-  {
-   "id": "programmatic-control",
-   "label": "Programmatic Control",
-   "kind": "guide",
-   "group": "Chat​",
-   "child": true,
-   "docPath": "programmatic-control",
-   "reachable": "sidebar",
-   "status": "❌",
-   "findings": [
-    14
-   ],
-   "notes": [
-    "Issue: the only backend code on the page (_common.py) is showcase internals with undefined names, so the agent behind the Run button has to be guessed."
-   ],
-   "block": null,
-   "links": [
-    {
-     "text": null,
-     "clip": "ANTIGRAVITY-vue-10-ProgrammaticControl",
-     "loom": null,
-     "narration": "narration/scripts/ANTIGRAVITY-vue-10-ProgrammaticControl.json"
     }
    ],
    "review": {
@@ -422,28 +391,6 @@
    "added": "2026-11-10"
   },
   {
-   "id": "state-rendering",
-   "label": "State Rendering",
-   "kind": "guide",
-   "group": "Controlled",
-   "child": true,
-   "docPath": "generative-ui/state-rendering",
-   "reachable": "sidebar",
-   "status": "N/A",
-   "findings": [],
-   "notes": [
-    "Note: Not available for Google Antigravity (the page says \"Not available for Google Antigravity yet. This feature (shared-state-streaming) hasn't been tagged in any Google Antigravity cell yet\")."
-   ],
-   "block": null,
-   "links": [],
-   "review": {
-    "verdict": null,
-    "approvedAt": null,
-    "by": null
-   },
-   "added": "2026-11-10"
-  },
-  {
    "id": "mcp-apps",
    "label": "MCP Apps",
    "kind": "guide",
@@ -489,7 +436,7 @@
     25,
     26,
     27,
-    29
+    51
    ],
    "notes": [
     "Note: build() in the agent snippet is never defined. Notes list updates live from the agent."
@@ -521,7 +468,7 @@
    "status": "✅",
    "findings": [
     30,
-    31
+    51
    ],
    "notes": [],
    "block": null,
@@ -541,28 +488,6 @@
    "added": "2026-11-10"
   },
   {
-   "id": "shared-state-streaming",
-   "label": "State Streaming",
-   "kind": "guide",
-   "group": "Shared state",
-   "child": true,
-   "docPath": "shared-state/streaming",
-   "reachable": "sidebar",
-   "status": "N/A",
-   "findings": [],
-   "notes": [
-    "Note: Not available for Google Antigravity (the page says \"Not available for Google Antigravity yet. This feature (shared-state-streaming) hasn't been tagged in any Google Antigravity cell yet\")."
-   ],
-   "block": null,
-   "links": [],
-   "review": {
-    "verdict": null,
-    "approvedAt": null,
-    "by": null
-   },
-   "added": "2026-11-10"
-  },
-  {
    "id": "shared-state-readonly",
    "label": "Agent Read-Only Context",
    "kind": "guide",
@@ -574,7 +499,7 @@
    "findings": [
     35,
     36,
-    37
+    51
    ],
    "notes": [
     "Issue: the agent never sees the useAgentContext value (asked which workspace, it answered C:/srv/agents/w1, not northstar). The Antigravity adapter needs experimental_app_context=True on the agent, which the page never mentions."
@@ -605,13 +530,11 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    38,
     39,
-    40,
-    41
+    40
    ],
    "notes": [
-    "Note: TimePickerCard.vue and agents._common are never shown, and the agent prompt names book_call while the Vue tool is schedule_meeting. Works with a simple picker added."
+    "Note: agents._common is never shown, and the agent prompt names book_call while the Vue tool is schedule_meeting. Works as published otherwise."
    ],
    "block": null,
    "links": [
@@ -637,13 +560,12 @@
    "child": true,
    "docPath": "human-in-the-loop/useInterrupt",
    "reachable": "sidebar",
-   "status": "❌",
+   "status": "✅",
    "findings": [
-    42,
     43
    ],
    "notes": [
-    "Issue: the page says Antigravity should use useHumanInTheLoop, but its frontend and backend sections have no code; only a useInterrupt panel and an App.vue importing a MeetingChat component that is never shown."
+    "Note: now working (doc updated 2026-11-18). runtime-url=\"/api/copilotkit\" 404s on Vite and the backend section has no code; the quickstart Antigravity agent calls the frontend tool as is."
    ],
    "block": null,
    "links": [
@@ -651,7 +573,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-19-UseInterrupt",
      "loom": null,
-     "narration": "narration/scripts/ANTIGRAVITY-vue-19-UseInterrupt.json"
+     "narration": null
     }
    ],
    "review": {
@@ -669,12 +591,12 @@
    "child": true,
    "docPath": "human-in-the-loop/headless",
    "reachable": "sidebar",
-   "status": "❌",
+   "status": "✅",
    "findings": [
-    44
+    43
    ],
    "notes": [
-    "Issue: the only code on the page is App.vue importing HeadlessInterruptPanel.vue, which is never shown; the primitives section is text only, so there is nothing to run."
+    "Note: now working (doc updated 2026-11-18). runtime-url=\"/api/copilotkit\" 404s on Vite and the backend section has no code; the quickstart Antigravity agent calls the frontend tool as is."
    ],
    "block": null,
    "links": [
@@ -682,7 +604,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-20-HeadlessInterrupts",
      "loom": null,
-     "narration": "narration/scripts/ANTIGRAVITY-vue-20-HeadlessInterrupts.json"
+     "narration": null
     }
    ],
    "review": {
@@ -764,7 +686,8 @@
    "reachable": "sidebar",
    "status": "❌",
    "findings": [
-    47
+    47,
+    51
    ],
    "notes": [
     "Issue: the delegation-log frontend section has no code, and subagents.py needs httpx (not in the install step) and agents._common, which is never shown."
@@ -813,39 +736,7 @@
     "by": null
    },
    "added": "2026-11-10"
-  },
-  {
-   "id": "agentic-chat-ui",
-   "label": "Chat Components",
-   "kind": "guide",
-   "group": "Basics",
-   "child": false,
-   "docPath": "agentic-chat-ui",
-   "reachable": "in-content",
-   "status": "❌",
-   "findings": [
-    6
-   ],
-   "notes": [
-    "Issue: the Vue page only has React/Next.js code (page.tsx, <CopilotKit>), no Vue template, and the backend imports the unpublished agents._common."
-   ],
-   "block": null,
-   "links": [
-    {
-     "text": null,
-     "clip": "ANTIGRAVITY-vue-24-AgenticChatUi",
-     "loom": "https://www.loom.com/share/7c074205cc714b5591b2febce22940df",
-     "narration": "narration/scripts/ANTIGRAVITY-vue-24-AgenticChatUi.json",
-     "filmed": "2026-11-12"
-    }
-   ],
-   "review": {
-    "verdict": null,
-    "approvedAt": null,
-    "by": null
-   },
-   "linkedFrom": "quickstart"
   }
  ],
- "quickstartBlocked": "the Vue quickstart is the Antigravity landing page with only Next.js route code; there are no Vue steps, so a reader has no working Vue app to build on"
+ "quickstartBlocked": "the Vue quickstart is the generic Vue page with a BuiltInAgent (OpenAI) runtime; nothing on it connects an Antigravity agent, so a reader has no Vue app on Antigravity to build on"
 }

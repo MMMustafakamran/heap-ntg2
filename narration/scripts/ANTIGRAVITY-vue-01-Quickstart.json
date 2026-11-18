@@ -3,15 +3,15 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so this is the Vue quickstart page for Vue with Google Antigravity, and I'm reporting a problem on this page."
+   "text": "Ok so this is the quickstart page for Vue with Google Antigravity, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "So this is the problem, umm, it's just the Antigravity landing page, and the demo on it is a four oh four."
+   "text": "So this is the problem, umm, it says if you have an agent, use your framework's quickstart, but this is the Antigravity quickstart."
   },
   {
    "at": "evidence#2",
-   "text": "And the only code here is a Next JS route, uh, nothing for Vue."
+   "text": "And the only runtime here registers the built in agent, uh, nothing for Antigravity."
   },
   {
    "at": "ide",
@@ -19,15 +19,15 @@
   },
   {
    "at": "+",
-   "text": "This part wasn't on the page, the whole Vue app and the server for the agent, so I had to write it myself."
+   "text": "This part wasn't on the page, the Antigravity agent in the runtime, so I added it myself."
   },
   {
    "at": "demo",
-   "text": "Moving on to the demo. The quickstart should give you a working Vue app, the chat only works because of my own wiring."
+   "text": "Moving on to the demo. The chat replies, but only because I wired the Antigravity agent in myself."
   },
   {
    "at": "notepad",
-   "text": "So basically, a Vue quickstart should have Vue steps, but there's no create Vue step, no Vue package and no server, so there's nothing to follow."
+   "text": "So basically, this is just the generic Vue setup with the built in agent, there's no Antigravity backend or wiring at all, so you have to guess it."
   },
   {
    "at": "+",

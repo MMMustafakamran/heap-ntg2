@@ -2,9 +2,9 @@
 
 > Create a two-way connection between your UI and agent state.
 
-## What is shared state?
+## What is shared state? [#what-is-shared-state]
 
-Agentic Copilots maintain a shared state that seamlessly connects your UI with the agent's execution. This shared state system allows you to:
+Shared state connects your UI with the agent's run. With shared state you can:
 
 - Display the agent's current progress and intermediate results
 - Update the agent's state through UI interactions
@@ -18,7 +18,7 @@ Agentic Copilots maintain a shared state that seamlessly connects your UI with t
   className="rounded-lg shadow-lg border mt-0"
 />
 
-## When should I use this?
+## When should I use this? [#when-should-i-use-this]
 
 Use shared state when you want the agent and the user to collaborate through the same application state. The agent's outputs are reflected in the UI, and user updates in the UI are reflected in the agent's execution.
 
@@ -29,7 +29,7 @@ Use shared state when you want the agent and the user to collaborate through the
   surface="docs_shared_state"
 />
 
-## Reading agent state
+## Reading agent state [#reading-agent-state]
 
 <Steps>
   <Step>
@@ -43,7 +43,6 @@ Use shared state when you want the agent and the user to collaborate through the
     with `agent.setState`), or what a server tool last stored, whichever is
     newer. Say in the system instructions when to call it:
 
-    
 ~~~~python title="shared_state.py"
 READ_WRITE_PROMPT = (
     "You are a helpful, concise assistant. Call `get_shared_state` before "
@@ -67,7 +66,6 @@ def shared_state_read_write_agent():
 
 ~~~~
 
-
     The tool is silent: it emits no `TOOL_CALL_*` events, so no tool card
     appears in the chat. A tool of your own with the same name replaces it.
 
@@ -81,7 +79,6 @@ def shared_state_read_write_agent():
     browser straight away, before the tool's own result, so any component
     subscribed with `useAgent` re-renders while the agent is still running.
 
-    
 ~~~~python title="shared_state.py"
 def set_notes(notes: list[str]) -> str:
     """Replace the notes array in shared state with the full updated list.
@@ -96,7 +93,6 @@ def set_notes(notes: list[str]) -> str:
 
 
 ~~~~
-
 
     Spread `experimental_get_state()` into the new value, as above: `experimental_set_state()` replaces
     the whole object, so leaving it out drops the keys the UI owns, such as
@@ -149,7 +145,7 @@ const state = computed(
 
 The returned `agent.value.state` is a plain object. Read it like any other reactive application data and render the parts you care about: agent-written notes, structured outputs, progress indicators, or anything else the agent has put there.
 
-## Writing agent state
+## Writing agent state [#writing-agent-state]
 
 The same agent object exposes `setState`. Calling it from a UI event handler pushes the new value into shared state, and the agent reads it back on its next turn. The UI's writes visibly steer the model.
 
@@ -172,13 +168,13 @@ function setTone(tone: string) {
 </template>
 ```
 
-This is what makes the channel two-way: the UI doesn't just observe the agent, it can hand the agent fresh inputs — preferences, selections, or partial work — without going through the chat thread.
+The UI can also send the agent new inputs, such as preferences, selections, or partial work, without the chat.
 
-## Rendering shared state in the UI
+## Rendering shared state in the UI [#rendering-shared-state-in-the-ui]
 
 Because `agent.state` is plain data exposed through a Vue ref, the UI layer is ordinary Vue. The example above wires the agent's outputs into a list and feeds user edits back through `setState`.
 
-Nothing about this is chat-specific: `useAgent` works in any component under `CopilotKitProvider`, so you can render agent state in your main view or canvas, not just inside the chat panel. See **[Render agent state in your app](/vue/google-antigravity/vue/shared-state/rendering-in-app)** for the full main-view pattern.
+Nothing about this is chat-specific: `useAgent` works in any component under `CopilotKitProvider`, so you can render shared state in your main view or canvas, not just inside the chat panel. See **[Render agent state in your app](/vue/shared-state/rendering-in-app)** for the full main-view pattern.
 
 ```vue title="src/App.vue"
 <script setup lang="ts">
@@ -194,100 +190,20 @@ import SharedWorkspace from "./components/SharedWorkspace.vue";
 </template>
 ```
 
-## Streaming partial state updates
+## Streaming partial state updates [#streaming-partial-state-updates]
 
-By default, agent state only updates *between* backend checkpoints, so a long-running tool call appears as one big burst at the end. State streaming forwards a specific tool argument straight into a state key *as it's being generated*, so the UI can watch the answer assemble token-by-token.
+By default, shared state only updates *between* backend checkpoints, so a long-running tool call appears as one big burst at the end. State streaming copies a tool argument into a state key while the model writes it, so the UI can watch the answer assemble token-by-token. The sample below is the LangGraph (Python) version.
 
-```python
-# src/agents/shared_state_streaming.py
-import uuid
+> **Not available for Google Antigravity yet.** The Shared State: Streaming demo for Google Antigravity can't run yet, so its code isn't shown here.
 
-from langchain.agents import AgentState as BaseAgentState, create_agent
-from langchain.tools import ToolRuntime, tool
-from langchain_core.messages import ToolMessage
-from langchain_openai import ChatOpenAI
-from langgraph.types import Command
+See **[State streaming](/vue/shared-state/streaming)** for the full walkthrough, including the corresponding `useAgent` subscription on the frontend.
 
-from copilotkit import (
-    CopilotKitMiddleware,
-    StateItem,
-    StateStreamingMiddleware,
-)
-
-
-class AgentState(BaseAgentState):
-    """Shared state. `document` is streamed token-by-token."""
-
-    document: str
-
-
-@tool
-def write_document(document: str, runtime: ToolRuntime) -> Command:
-    """Write a document for the user.
-
-    Always call this tool when the user asks you to write or draft
-    something of any length (an essay, poem, email, summary, etc.).
-    The `document` argument is streamed *per token* into shared agent
-    state under the `document` key, so the UI can render it as it is
-    generated.
-    """
-    return Command(
-        update={
-            "document": document,
-            "messages": [
-                ToolMessage(
-                    content="Document written to shared state.",
-                    name="write_document",
-                    id=str(uuid.uuid4()),
-                    tool_call_id=runtime.tool_call_id,
-                )
-            ],
-        }
-    )
-
-
-graph = create_agent(
-    model=ChatOpenAI(reasoning_effort="none", model="gpt-6-luna"),
-    tools=[write_document],
-    middleware=[
-        CopilotKitMiddleware(),
-        # Forward every token of write_document's `document` argument
-        # straight into state["document"] while the tool call is still
-        # streaming. Without this, `document` would only update once
-        # the tool call completes.
-        #
-        # NOTE: the frontend `usePredictStateSubscription` hook indexes
-        # the (partial-JSON-parsed) tool args by `state_key`, so the
-        # tool's argument name MUST match `state_key` ("document") for
-        # per-token deltas to land in `state.document`.
-        StateStreamingMiddleware(
-            StateItem(
-                state_key="document",
-                tool="write_document",
-                tool_argument="document",
-            )
-        ),
-    ],
-    state_schema=AgentState,
-    system_prompt=(
-        "You are a collaborative writing assistant. Whenever the user asks "
-        "you to write, draft, or revise any piece of text, ALWAYS call the "
-        "`write_document` tool with the full content as a single string in "
-        "the `document` argument. Never paste the document into a chat "
-        "message directly — the document belongs in shared state and the "
-        "UI renders it live as you type."
-    ),
-)
-```
-
-See **[State streaming](/vue/google-antigravity/vue/shared-state/streaming)** for the full walkthrough, including the corresponding `useAgent` subscription on the frontend.
-
-## Read-only context
+## Read-only context [#read-only-context]
 
 When a value is **UI-owned** and the agent should read it but never write it back, such as current user, selected record, or scroll position, reach for `useAgentContext` instead of full shared state. It publishes values as a one-way UI-to-agent channel that auto-unregisters on unmount.
 
 `useAgentContext` is a separate read-only capability; it does not replace the bidirectional `agent.state` / `agent.setState(...)` contract above.
 
-See **[Agent read-only context](/vue/google-antigravity/vue/shared-state/agent-readonly)** for the full pattern.
+See **[Agent read-only context](/vue/shared-state/agent-readonly)** for the full pattern.
 
 <IntegrationGrid path="shared-state" exclude={["agno", "agent-spec", "spring-ai", "langroid"]} />

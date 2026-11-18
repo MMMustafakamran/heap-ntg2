@@ -1,5 +1,5 @@
 // HARNESS: runtime for the Vue shared-state pages (group V3), port 8148. Copy of server.antigravity.ts.
-// No Vue page shows how to register an Antigravity agent (FINDINGS.md #1); HttpAgent -> ../backend/shared_state_main.py :8144.
+// No Vue page shows how to register an Antigravity agent (FINDINGS.md #9); HttpAgent -> ../backend/shared_state_main.py :8144.
 // Agent ids come from the doc snippets: "workspace" (shared-state), "writer" (streaming),
 // "default" (rendering-in-app and agent-readonly use the default agent).
 import { createServer } from "node:http";

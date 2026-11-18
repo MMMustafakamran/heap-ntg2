@@ -5,11 +5,9 @@ import FrontendToolsApp from "./pages/FrontendToolsApp.vue";
 import PrebuiltComponentsApp from "./pages/PrebuiltComponentsApp.vue"; // V1
 import SlotsApp from "./pages/SlotsApp.vue"; // V1
 import HeadlessUiApp from "./pages/HeadlessUiApp.vue"; // V1
-import ProgrammaticControlApp from "./pages/ProgrammaticControlApp.vue"; // V1
 import InspectorApp from "./pages/InspectorApp.vue"; // V1
 import SharedStateApp from "./pages/SharedStateApp.vue"; // V3
 import RenderingInAppApp from "./pages/RenderingInAppApp.vue"; // V3
-import StreamingApp from "./pages/StreamingApp.vue"; // V3
 import AgentReadonlyApp from "./pages/AgentReadonlyApp.vue"; // V3
 // V4: async so a page whose doc import is missing (headless) only breaks its own route.
 import { defineAsyncComponent } from "vue"; // V4
@@ -27,17 +25,14 @@ const routes: Record<string, unknown> = {
   "/headless-threads": v4(() => import("./pages/HeadlessThreadsApp.vue")), // V2
   "/tool-based": v4(() => import("./pages/ToolBasedApp.vue")), // V2
   "/tool-rendering": v4(() => import("./pages/ToolRenderingApp.vue")), // V2
-  "/state-rendering": v4(() => import("./pages/StateRenderingApp.vue")), // V2
   "/mcp-apps": v4(() => import("./pages/McpAppsApp.vue")), // V2
 
   "/prebuilt-components": PrebuiltComponentsApp, // V1
   "/slots": SlotsApp, // V1
   "/headless-ui": HeadlessUiApp, // V1
-  "/programmatic-control": ProgrammaticControlApp, // V1
   "/inspector": InspectorApp, // V1
   "/shared-state": SharedStateApp, // V3
   "/shared-state-rendering": RenderingInAppApp, // V3
-  "/shared-state-streaming": StreamingApp, // V3
   "/shared-state-readonly": AgentReadonlyApp, // V3
 };
 const Root = routes[location.pathname.replace(/\/$/, "") || "/"] ?? FrontendToolsApp;

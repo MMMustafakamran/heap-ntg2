@@ -1,5 +1,5 @@
 // HARNESS (group V1): copy of server.antigravity.ts on its own port (8146) so the V1 pages' agent ids resolve.
-// The docs never show how to register an Antigravity agent for Vue (FINDINGS.md #1). Agent ids are the ones the
+// The docs never show how to register an Antigravity agent for Vue (FINDINGS.md #9). Agent ids are the ones the
 // pages use ("my-agent": prebuilt-components / headless-ui, "sales": programmatic-control, "default": slots, inspector),
 // all pointed at this repo's quickstart Antigravity backend (../backend, :8141).
 import { createServer } from "node:http";

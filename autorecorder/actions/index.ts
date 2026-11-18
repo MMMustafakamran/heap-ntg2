@@ -13,6 +13,8 @@ import {
   runHeadlessThreadsAction,
   runHeadlessUiAction,
   runHitlAction,
+  runHeadlessInterruptAction,
+  runUseInterruptAction,
   runMcpAppsAction,
   runNewFindingAction,
   runThreadsDrawerAction,
@@ -24,6 +26,8 @@ export const ACTION_MAP: Record<string, PageActionHandler> = {
   'frontend-tools': runVueFrontendToolsAction,
   'headless-ui': runHeadlessUiAction,
   hitl: runHitlAction,
+  'use-interrupt': runUseInterruptAction,
+  'headless-interrupts': runHeadlessInterruptAction,
   // Threads pages with the Intelligence key (2026-11-10).
   'mcp-apps': runMcpAppsAction,
   'threads-drawer': runThreadsDrawerAction,

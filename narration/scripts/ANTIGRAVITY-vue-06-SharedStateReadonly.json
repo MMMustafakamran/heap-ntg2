@@ -7,11 +7,11 @@
   },
   {
    "at": "evidence",
-   "text": "So this is the problem, the page says these values reach the agent on every turn."
+   "text": "So this is the problem, the page says these values are sent to the agent with every run."
   },
   {
    "at": "evidence#2",
-   "text": "And again here, umm, the agent sees them on every turn."
+   "text": "And here it says, umm, the agent answers northstar."
   },
   {
    "at": "ide",

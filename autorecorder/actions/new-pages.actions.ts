@@ -26,29 +26,6 @@ async function promptAndWaitFor(page: Page, config: PageRecordConfig, text: RegE
 }
 
 export const NEW_FINDINGS: Record<string, NewFinding> = {
-  // FINDINGS.md #14
-  'programmatic-control': {
-    evidence: [{ text: 'def aimock_headers() -> dict[str, str]:', caption: '_common.py is showcase helpers, no runnable agent' }],
-    note: [
-      "page says run agent drives the sales agent from code",
-      "clicked run, it goes thru but the button shows no output so u cant see what the run did",
-      "the only backend code is _common.py and its model workspace slug names are never defined",
-      "nothing registers sales so i pointed it at the quickstart agent myself",
-    ].join('\n'),
-    demo: async (page, _config, _root, ctx) => {
-      const run = page.getByRole('button', { name: 'Run agent' });
-      await run.waitFor({ state: 'visible', timeout: 15000 });
-      await sleep(1200);
-      await glideClick(page, run);
-      await sleep(1500);
-      const done = await page
-        .waitForFunction(() => !(document.querySelector('button') as HTMLButtonElement | null)?.disabled, null, { timeout: 60000 })
-        .then(() => true)
-        .catch(() => false);
-      if (!done) ctx.warn('Run agent stayed disabled for 60 s');
-      await glideTo(page, run, 3000);
-    },
-  },
   // FINDINGS.md #19, #20
   'tool-rendering': {
     evidence: [
@@ -62,68 +39,18 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       "card reads city but get_weather takes location, so the names dont match",
     ].join('\n'),
   },
-  // FINDINGS.md #6 (doc-only clip: nothing on the page runs in Vue)
-  'agentic-chat-ui': {
-    evidence: [
-      { text: '<CopilotKit runtimeUrl="/api/copilotkit" agent="agentic_chat">', caption: 'React/Next code on the Vue page' },
-      { text: 'export function useAgenticChatSuggestions() {', caption: 'useConfigureSuggestions used with no import (agents._common in chat.py is behind the Code tab)' },
-    ],
-    note: [
-      "vue chat components page should give vue chat code",
-      "theres nothing to run, the only code is a react next.js page.tsx with no vue template and no copilotkit provider",
-      "useconfiguresuggestions has no import and chat.py imports agents._common which is never shown",
-      "so there is nothing to build the vue page from",
-    ].join('\n'),
-    demo: async () => {},
-  },
   // FINDINGS.md #35
   'shared-state-readonly': {
     evidence: [
-      { text: "Surfaced to the agent through the backend's CopilotKit middleware on every turn.", caption: 'the page promises the agent sees the context' },
-      { text: "The agent sees them on every turn through the runtime's context injection", caption: 'same promise' },
+      { text: 'Sent to the agent with every run.', caption: 'the page promises the agent sees the context' },
+      { text: 'Ask the agent which workspace is active. It answers northstar', caption: 'the page promises the answer northstar' },
     ],
     note: [
-      "page says useagentcontext values reach the agent on every turn",
+      "page says useagentcontext values are sent to the agent every run and it answers northstar",
       "set workspace to northstar, asked which workspace, the agent answered with some server path and not northstar",
       "the antigravity adapter only passes the context with experimental_app_context=true and the page never mentions it",
       "no backend is shown at all, so the agent never gets the context",
     ].join('\n'),
-  },
-  // FINDINGS.md #42
-  'use-interrupt': {
-    evidence: [
-      { text: "Some runtimes cannot pause a run mid-tool the way LangGraph's", caption: 'the page says to use useHumanInTheLoop instead' },
-      { text: 'The backend: agent instructed to call the frontend tool', caption: 'the frontend / backend sections have no code' },
-      { text: 'import MeetingChat from', caption: 'MeetingChat is never shown' },
-    ],
-    note: [
-      "page says antigravity cant pause mid tool so use usehumanintheloop",
-      "the frontend and backend sections are just text, no code for it at all",
-      "the only code is a useinterrupt panel and an app.vue importing meetingchat which is never shown",
-      "i got the approve card only by copying the backend from the hitl page and guessing meetingchat",
-    ].join('\n'),
-    demo: async (page, config, _root, ctx) => {
-      if (!(await promptAndWaitFor(page, config, /Pick a time/, 60000))) ctx.fail('No approval panel showed up');
-    },
-  },
-  // FINDINGS.md #44
-  'headless-interrupts': {
-    evidence: [
-      { text: 'import HeadlessInterruptPanel from "./components/HeadlessInterruptPanel.vue";', caption: 'HeadlessInterruptPanel.vue is never shown' },
-      { text: 'Register a useHumanInTheLoop tool with a Vue render component', caption: 'the primitives section is prose only' },
-    ],
-    note: [
-      "page says u can build ur own interrupt ui with the headless primitives",
-      "the page is blank, vite fails to resolve the import of headlessinterruptpanel.vue",
-      "that component is never shown and the primitives part is only text",
-      "so there is nothing on the page to build the panel from",
-    ].join('\n'),
-    demo: async (page, _config, _root, ctx) => {
-      await sleep(6000);
-      const input = await page.locator('textarea, input').count();
-      if (!input) ctx.fail('Page is blank: HeadlessInterruptPanel.vue does not exist (Vite import error)');
-      await sleep(2000);
-    },
   },
   // FINDINGS.md #46
   webmcp: {
@@ -301,4 +228,28 @@ export const runMcpAppsAction: PageActionHandler = async (page, config, _root, c
   await sleep(8000); // the drawing fills in
   await glideTo(page, frame, 4000);
   await sleep(6000); // an optional text reply after the tool call
+};
+
+/** Pausing the Agent for Input (✅ since 2026-11-18): the doc's MeetingPicker shows in the chat; pick the slot. */
+export const runUseInterruptAction: PageActionHandler = async (page, config, _root, ctx) => {
+  if (!(await promptAndWaitFor(page, config, /Pick a time for/, 90000))) return ctx.fail('No meeting picker showed up');
+  const slot = page.getByRole('button', { name: 'Tomorrow at 09:00' }).first();
+  if (await slot.isEnabled().catch(() => false)) {
+    mark('click', 'Tomorrow at 09:00');
+    await glideClick(page, slot);
+    await sleep(10000);
+  }
+};
+
+/** Headless Interrupts: the doc's HeadlessApprovalPanel shows the reason outside the chat; click Approve. */
+export const runHeadlessInterruptAction: PageActionHandler = async (page, config, _root, ctx) => {
+  await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
+  const approve = page.getByRole('button', { name: 'Approve', exact: true }).first();
+  const shown = await approve.waitFor({ state: 'visible', timeout: 90000 }).then(() => true).catch(() => false);
+  void checkpoint('render', 'the headless approval panel shows Approve / Reject', async () => (shown ? 'Approve visible' : null), { ok: () => shown });
+  if (!shown) return ctx.fail('The headless approval panel never appeared');
+  await glideTo(page, approve, 2500);
+  mark('click', 'Approve');
+  await glideClick(page, approve);
+  await sleep(10000);
 };

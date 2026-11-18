@@ -1,15 +1,14 @@
 /**
  * Pages of https://docs.copilotkit.ai/vue/google-antigravity under test. The Vue app is a single
  * Vite app with no router, so both clips drive http://localhost:5140/. Its runtime is the harness's
- * server.antigravity.ts (HttpAgent -> own Antigravity backend on 8141). HARNESS: the rendered quickstart has no Vue
- * steps at all (FINDINGS.md #9), so the Vue wiring is the harness's own.
+ * server.antigravity.ts (HttpAgent -> own Antigravity backend on 8141). HARNESS: the Vue quickstart only registers a
+ * BuiltInAgent and never an Antigravity agent (FINDINGS.md #9), so the Antigravity wiring is the harness's own.
  */
 import { definePages } from '../core/types';
 
 export const SKIP_RECORDING: Record<string, string> = {
   // Owner rule (2026-11-11): a page with a "Not available for <framework>" banner is N/A, no clip.
-  'state-rendering': 'N/A: the page says "Not available for Google Antigravity yet"',
-  'shared-state-streaming': 'N/A: the page says "Not available for Google Antigravity yet"',
+  // 2026-11-18: State Rendering and State Streaming are gone from the docs (redirects), so they were dropped.
 };
 
 export const PAGES = definePages([
@@ -25,7 +24,7 @@ export const PAGES = definePages([
     extraTabs: [
       { filePath: 'my-copilot-app/package.json', startLine: 13, endLine: 17 },
       { filePath: 'my-copilot-app/server.ts', startLine: 1, endLine: 26 },
-      { filePath: 'my-copilot-app/server.antigravity.ts', startLine: 1, endLine: 25, addedText: '// HARNESS: no Vue page shows how to register an Antigravity agent (FINDINGS.md #1).' },
+      { filePath: 'my-copilot-app/server.antigravity.ts', startLine: 1, endLine: 25, addedText: '// HARNESS: no Vue page shows how to register an Antigravity agent (FINDINGS.md #9).' },
       { filePath: 'my-copilot-app/src/main.ts', startLine: 1, endLine: 5 },
       { filePath: 'my-copilot-app/src/App.quickstart.vue', startLine: 1, endLine: 13 },
     ],
@@ -71,19 +70,6 @@ export const PAGES = definePages([
     endLine: 56,
     extraTabs: [{ filePath: 'my-copilot-app/src/pages/RenderingInAppApp.vue', startLine: 1, endLine: 14 }],
     prompt: 'Please remember that the launch date is Friday.',
-  },
-  {
-    id: 'shared-state-streaming',
-    name: 'State Streaming (Vue)',
-    videoName: 'SharedStateStreaming',
-    docPath: 'shared-state/streaming',
-    route: '/shared-state-streaming',
-    ideFile: 'my-copilot-app/src/components/v3/StreamingDocument.vue',
-    startLine: 1,
-    endLine: 24,
-    extraTabs: [{ filePath: 'backend/shared_state_main.py', startLine: 40, endLine: 50 }],
-    prompt: 'Write a short four line poem about the sea.',
-    waitAfterPromptMs: 5000,
   },
   {
     id: 'shared-state-readonly',
@@ -133,18 +119,6 @@ export const PAGES = definePages([
     endLine: 37,
     extraTabs: [{ filePath: 'my-copilot-app/src/pages/HeadlessUiApp.vue', startLine: 1, endLine: 14 }],
     prompt: 'Say hello in one short sentence.',
-  },
-  {
-    id: 'programmatic-control',
-    name: 'Programmatic Control (Vue)',
-    videoName: 'ProgrammaticControl',
-    docPath: 'programmatic-control',
-    route: '/programmatic-control',
-    ideFile: 'my-copilot-app/src/components/v1/AgentTrigger.vue',
-    startLine: 1,
-    endLine: 36,
-    extraTabs: [{ filePath: 'my-copilot-app/src/pages/ProgrammaticControlApp.vue', startLine: 1, endLine: 13, addedText: '  <!-- HARNESS: doc runtime-url="/api/copilotkit" (404 on Vite); V1 runtime on 8146 registers "sales" pointed at the' }],
-    prompt: 'Summarize the latest sales data',
   },
   {
     id: 'inspector',
@@ -210,22 +184,6 @@ export const PAGES = definePages([
     prompt: 'What is the weather in Tokyo?',
   },
   {
-    id: 'state-rendering',
-    name: 'State Rendering (Vue)',
-    videoName: 'StateRendering',
-    docPath: 'generative-ui/state-rendering',
-    route: '/state-rendering',
-    ideFile: 'my-copilot-app/src/components/state-rendering/ResearchProgress.vue',
-    startLine: 1,
-    endLine: 21,
-    extraTabs: [
-      { filePath: 'my-copilot-app/src/pages/StateRenderingApp.vue', startLine: 1, endLine: 12 },
-      { filePath: 'backend/state_rendering_main.py', startLine: 1, endLine: 25 },
-    ],
-    prompt: 'Research the history of the bicycle and write a short draft.',
-    waitAfterPromptMs: 5000,
-  },
-  {
     id: 'mcp-apps',
     name: 'MCP Apps (Vue)',
     videoName: 'McpApps',
@@ -241,18 +199,19 @@ export const PAGES = definePages([
   // V4
   { id: 'hitl', name: 'Human in the Loop (Vue)', videoName: 'HumanInTheLoop', docPath: 'human-in-the-loop', route: '/hitl',
     ideFile: 'my-copilot-app/src/components/v4/hitl/MeetingApproval.vue', startLine: 1, endLine: 18,
-    extraTabs: [{ filePath: 'backend/agents/hitl.py', startLine: 1, endLine: 13 }, { filePath: 'my-copilot-app/src/components/v4/hitl/TimePickerCard.vue', startLine: 1, endLine: 22 }],
+    extraTabs: [{ filePath: 'backend/agents/hitl.py', startLine: 1, endLine: 13 }, { filePath: 'my-copilot-app/src/components/v4/hitl/TimePickerCard.vue', startLine: 1, endLine: 18 }],
     prompt: 'Please book an onboarding call with the sales team, my name is Sam.', waitAfterPromptMs: 5000 },
   { id: 'use-interrupt', name: 'useInterrupt (Vue)', videoName: 'UseInterrupt', docPath: 'human-in-the-loop/useInterrupt', route: '/use-interrupt',
-    ideFile: 'my-copilot-app/src/components/v4/interrupt/ApprovalPanel.vue', startLine: 1, endLine: 14,
-    extraTabs: [{ filePath: 'my-copilot-app/src/pages/UseInterruptApp.vue', startLine: 1, endLine: 12 }, { filePath: 'backend/v4_main.py', startLine: 13, endLine: 35, addedText: '# HARNESS: no agent wraps schedule_meeting on any page; quickstart AntigravityAgent + tools=[...].' }],
-    prompt: 'Schedule a meeting about the roadmap with Alex.', waitAfterPromptMs: 5000 },
+    ideFile: 'my-copilot-app/src/components/v4/interrupt/MeetingTool.vue', startLine: 1, endLine: 16,
+    extraTabs: [{ filePath: 'my-copilot-app/src/components/v4/interrupt/MeetingPicker.vue', startLine: 1, endLine: 21 }, { filePath: 'my-copilot-app/src/pages/UseInterruptApp.vue', startLine: 1, endLine: 11 }],
+    prompt: 'Please book a call about the roadmap.', waitAfterPromptMs: 5000 },
   { id: 'headless-interrupts', name: 'Headless Interrupts (Vue)', videoName: 'HeadlessInterrupts', docPath: 'human-in-the-loop/headless', route: '/headless-interrupts',
-    ideFile: 'my-copilot-app/src/pages/HeadlessInterruptApp.vue', ideAddedText: "// Doc imports this component but never shows it; HARNESS empty placeholder (see the file).", startLine: 1, endLine: 12,
-    prompt: 'Schedule a meeting about the roadmap with Alex.', waitAfterPromptMs: 3000 },
+    ideFile: 'my-copilot-app/src/components/v4/headless/HeadlessApprovalPanel.vue', startLine: 1, endLine: 28,
+    extraTabs: [{ filePath: 'my-copilot-app/src/components/v4/headless/ApprovalBridge.vue', startLine: 1, endLine: 22 }, { filePath: 'my-copilot-app/src/components/v4/approval-store.ts', startLine: 1, endLine: 7 }, { filePath: 'my-copilot-app/src/pages/HeadlessInterruptApp.vue', startLine: 1, endLine: 12 }],
+    prompt: 'Please delete the old staging database. That needs my approval first.', waitAfterPromptMs: 3000 },
   { id: 'governed-actions', name: 'Governed Actions (Vue)', videoName: 'GovernedActions', docPath: 'human-in-the-loop/governed-actions', route: '/governed-actions',
     ideFile: 'my-copilot-app/src/components/v4/governed/GovernedActionTool.vue', startLine: 1, endLine: 24,
-    extraTabs: [{ filePath: 'my-copilot-app/src/components/v4/governed/GovernedActionCard.vue', startLine: 1, endLine: 46 }, { filePath: 'my-copilot-app/src/components/v4/governed/GovernedActionApproval.vue', startLine: 1, endLine: 58 }, { filePath: 'my-copilot-app/src/pages/GovernedActionsApp.vue', startLine: 1, endLine: 14 }],
+    extraTabs: [{ filePath: 'my-copilot-app/src/components/v4/governed/GovernedActionCard.vue', startLine: 1, endLine: 44 }, { filePath: 'my-copilot-app/src/components/v4/governed/GovernedActionApproval.vue', startLine: 1, endLine: 58 }, { filePath: 'my-copilot-app/src/pages/GovernedActionsApp.vue', startLine: 1, endLine: 14 }],
     prompt: 'Send an email to bob at example dot com saying hi. Before sending, call approve_governed_action with id a1, summary Send email to Bob, tool send_email, reference POL-7, verdict require_approval.', waitAfterPromptMs: 5000 },
   { id: 'webmcp', name: 'WebMCP (Vue)', videoName: 'WebMcp', docPath: 'webmcp', route: '/webmcp',
     ideFile: 'my-copilot-app/src/components/v4/webmcp/OrderSearch.vue', startLine: 1, endLine: 21,
@@ -262,7 +221,4 @@ export const PAGES = definePages([
     ideFile: 'backend/agents/subagents.py', startLine: 1, endLine: 112,
     extraTabs: [{ filePath: 'my-copilot-app/src/pages/SubagentsApp.vue', startLine: 1, endLine: 11 }],
     prompt: 'Write a short paragraph about why the sky is blue.', waitAfterPromptMs: 10000 },
-  // Doc-only finding (FINDINGS.md #6): the Vue page has only React/Next code, nothing to build.
-  { id: 'agentic-chat-ui', name: 'Chat Components (Vue)', videoName: 'AgenticChatUi', docPath: 'agentic-chat-ui', route: '',
-    ideFile: 'my-copilot-app/VERSIONS.md', startLine: 1, endLine: 1, prompt: '', docOnly: true, docOnlyAction: true },
 ]);

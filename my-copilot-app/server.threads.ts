@@ -12,7 +12,7 @@ try {
 } catch {}
 
 // HARNESS (begin): the snippet uses `agent` and `verifyAppSession` but never defines them, and shows
-// no server around the runtime. No Vue page shows how to register an Antigravity agent (FINDINGS.md #1),
+// no server around the runtime. No Vue page shows how to register an Antigravity agent (FINDINGS.md #9),
 // so `agent` is an HttpAgent to this repo's quickstart backend (backend/v2_main.py /default on 8143).
 const agent = new HttpAgent({ url: `${process.env.AGENT_BASE ?? "http://localhost:8143"}/default/` });
 async function verifyAppSession(_request: Request) {
@@ -39,6 +39,9 @@ const runtime = new CopilotRuntime({
     if (!session?.user) throw new Error("Unauthorized");
     return { id: session.user.id, name: session.user.name };
   },
+  // Each new thread is named from its first user message.
+  // For a short title from a model, pass { model: "openai/gpt-5-mini" }.
+  // Set to false to disable:
   // generateThreadNames: false,
   // lockTtlSeconds: 20,
   // lockHeartbeatIntervalSeconds: 15,

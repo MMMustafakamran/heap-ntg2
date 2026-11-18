@@ -1,22 +1,13 @@
 # Findings — Antigravity-vue
 Open doc defects only. A finding is proposed first and added only after the owner approves it (Claude Code proposes after the daily review and the owner approves locally: `.qa/instructions/QA-RULES.md` section 6). The entries from the 2026-11-04 Antigravity assignment were logged directly and reviewed by the owner at the end, a one-off exception that does not apply to new findings. Numbers are stable IDs (code cites `FINDINGS.md #N`), so gaps are removed findings.
-Stack: `@copilotkit/vue`/`runtime` 1.88.0 (npm latest, CI 2026-11-16), `vue` 3.5.44 (declared ^3.5.42), `vite` 8.3.5 (declared ^8.2.2), `tsx` 4.23.15, Node 26.7.0, Windows 11. Docs: https://docs.copilotkit.ai/vue/google-antigravity (snapshot 2026-11-04)
+Stack: `@copilotkit/vue`/`runtime` 1.89.0 (npm latest, CI 2026-11-18), `vue` 3.5.45 (declared ^3.5.42), `vite` 8.3.8 (declared ^8.2.2), `tsx` 4.23.15, backend `ag-ui-antigravity` 0.2.1, `google-antigravity` 0.1.23, `google-genai` 3.5.0, Node 26.7.0, npm 12, Windows 11. Docs: https://docs.copilotkit.ai/vue/google-antigravity (snapshot 2026-11-18)
 
 ## Dev blockers (seen with `npm run dev` and normal use of the page)
 
 ### [Quickstart](https://docs.copilotkit.ai/vue/google-antigravity/quickstart)
-**#9 The rendered Vue quickstart page has no Vue quickstart on it.**
-- **Doc:** https://docs.copilotkit.ai/vue/google-antigravity/quickstart (and `/vue/google-antigravity`), titled "Vue quickstart".
-- **Result:** in a browser the page shows the Antigravity landing content: "Bring your Google Antigravity agents into any app", "Build with Google Antigravity", "Start building", and "Connect your agent" with a Next.js `route.ts` (`HttpAgent`, `next/server`). There's no `npm create vue`, no `@copilotkit/vue` and no `server.ts`. Its embedded live demo (`showcase-google-antigravity-production.up.railway.app/vue/agentic-chat`) shows "404 This page could not be found". Seen in recording `ANTIGRAVITY-vue-01-Quickstart`.
-
-### [Chat Components](https://docs.copilotkit.ai/vue/google-antigravity/agentic-chat-ui)
-**#6 the Vue Chat Components page has only React/Next.js code, no Vue template.** Linked from the quickstart ("Read the docs").
-- **Doc:** `page.tsx` `<CopilotKit runtimeUrl="/api/copilotkit" agent="agentic_chat">`, `suggestions.ts` calls `useConfigureSuggestions` with no import, and `chat.py` does `from agents._common import build`, which is never shown.
-- **Result:** nothing on the page can be used in a Vue app (`<CopilotKit>`/`page.tsx` are React), and the backend needs the unpublished `agents._common`. Doc-only clip.
-
-### [Programmatic Control](https://docs.copilotkit.ai/vue/google-antigravity/programmatic-control)
-**#14 the only backend code on the page (_common.py) is showcase internals with undefined names, so the agent behind the Run button has to be guessed.**
-- Doc: `_common.py` uses MODEL, WORKSPACE, SLUG and aimock helpers that are never defined or imported / Result: cannot run as published; the harness reused the quickstart agent
+**#9 The Antigravity Vue quickstart is the generic Vue + BuiltInAgent page: nothing on it connects an Antigravity agent.**
+- **Doc:** https://docs.copilotkit.ai/vue/google-antigravity/quickstart (the sidebar's Quickstart, `/vue/google-antigravity`, shows the same page). The only runtime is `server.ts` with `default: new BuiltInAgent({ model: "openai:gpt-6-luna", ... })`, and the callout says "If you already have a LangGraph, CrewAI, Mastra, ADK, Pydantic AI, or other agent, use your framework's quickstart for the runtime wiring so it registers your agent instead." This is that framework's quickstart.
+- **Result:** the published steps run (re-checked 2026-11-18: `npx tsx server.ts` with an OpenAI key streams a reply), but the chat talks to CopilotKit's own OpenAI agent. There is no Antigravity backend, no `pip install ag-ui-antigravity`, no `HttpAgent` and no Gemini key anywhere on the page, so a reader can't get a Vue app on an Antigravity agent. **Confirmed by harness:** `server.antigravity.ts` (HttpAgent -> own Antigravity backend) is the harness's own guess.
 
 ### [Tool Rendering](https://docs.copilotkit.ai/vue/google-antigravity/generative-ui/tool-rendering)
 **#19 backend snippet uses build(), SYSTEM_PROMPT and 3 tools that are never shown; needed showcase code to run. Card also reads city but the backend tool arg is location.**
@@ -24,15 +15,7 @@ Stack: `@copilotkit/vue`/`runtime` 1.88.0 (npm latest, CI 2026-11-16), `vue` 3.5
 
 ### [Agent Read-Only Context](https://docs.copilotkit.ai/vue/google-antigravity/shared-state/agent-readonly)
 **#35 the agent never sees the useAgentContext value (asked which workspace, it answered C:/srv/agents/w1, not northstar). The Antigravity adapter needs experimental_app_context=True on the agent, which the page never mentions.**
-- Doc: "Surfaced to the agent through the backend's CopilotKit middleware on every turn." (useAgentContext({ description: "Active workspace", value: workspaceId }) with workspaceId = "northstar") / Result: asked "Which workspace am I in right now?" the agent replied "You are currently in the workspace: C:/srv/agents/w1"; the context never reaches it. ag_ui_antigravity only exposes useAgentContext values when the agent is built with experimental_app_context=True (get_app_context tool, see agent.py docstring), which the page never mentions.
-
-### [useInterrupt](https://docs.copilotkit.ai/vue/google-antigravity/human-in-the-loop/useInterrupt)
-**#42 the page says Antigravity should use useHumanInTheLoop, but its frontend and backend sections have no code; only a useInterrupt panel and an App.vue importing a MeetingChat component that is never shown.**
-- Doc: sections 'The frontend: useHumanInTheLoop with a Promise-resolving handler' and 'The backend: agent instructed to call the frontend tool' are prose only; the page says some runtimes cannot pause like interrupt() and to use useHumanInTheLoop, yet the only code is a useInterrupt ApprovalPanel and an App.vue importing ./components/MeetingChat.vue (never shown) / Result: nothing runnable from this page; an interrupt only appears with the backend copied from the HITL overview plus a guessed MeetingChat. ApprovalPanel resolves {approved:true} while the overview tool reads answer.payload['chosen_label'] (KeyError on approve; not exercised).
-
-### [Headless Interrupts](https://docs.copilotkit.ai/vue/google-antigravity/human-in-the-loop/headless)
-**#44 the only code on the page is App.vue importing HeadlessInterruptPanel.vue, which is never shown; the primitives section is text only, so there is nothing to run.**
-- Doc: App.vue `import HeadlessInterruptPanel from "./components/HeadlessInterruptPanel.vue";`, and 'The primitives' section is prose only / Error: Failed to resolve import "./components/HeadlessInterruptPanel.vue". Does the file exist? The page has no runnable code beyond the provider.
+- Doc: "Sent to the agent with every run." and "Ask the agent which workspace is active. It answers `northstar`." (useAgentContext({ description: "Active workspace", value: workspaceId }) with workspaceId = "northstar") / Result (re-checked 2026-11-18): asked "Which workspace am I in right now?" the agent replied "You are currently in the workspace: C:/srv/agents/w1"; the context never reaches it. ag_ui_antigravity only exposes useAgentContext values when the agent is built with experimental_app_context=True (get_app_context tool, see agent.py docstring), which the page never mentions.
 
 ### [WebMCP](https://docs.copilotkit.ai/vue/google-antigravity/webmcp)
 **#46 OrderSearch.vue calls searchOrders(), which the page never defines, and the agent never replies when the tool is used.**
@@ -61,17 +44,12 @@ Stack: `@copilotkit/vue`/`runtime` 1.88.0 (npm latest, CI 2026-11-16), `vue` 3.5
 - #25 Shared State: backend snippet calls build(...) which the page never defines or imports (same as React #8)
 - #26 Shared State: set_notes snippet uses experimental_get_state/experimental_set_state without imports
 - #27 Shared State: two separate blocks both titled src/components/SharedWorkspace.vue; the second (setTone) uses agent and WorkspaceState it never defines, merge is left to the reader
-- #29 Shared State: in-content links point to /vue/google-antigravity/vue/shared-state/... (doubled 'vue') -> 404
 - #30 Render agent state in your app: page has no backend code; relies on the Shared State page's agent
-- #31 Render agent state in your app: all in-page links use /vue/google-antigravity/vue/... (doubled 'vue') -> 404
 - #36 Agent Read-Only Context: page shows no backend code at all
-- #37 Agent Read-Only Context: links use doubled /vue/.../vue/ path -> 404
-- #38 Human in the Loop: TimePickerCard.vue is imported by MeetingApproval.vue but never shown
 - #39 Human in the Loop: hitl.py imports agents._common.build, never published
 - #40 Human in the Loop: backend prompt names book_call, the Vue snippet registers schedule_meeting (model still called schedule_meeting)
-- #41 Human in the Loop: links to useInterrupt/headless go to /vue/google-antigravity/vue/... (double vue)
-- #43 useInterrupt: runtime-url /api/copilotkit 404 on Vite
+- #43 Pausing the Agent for Input / Headless Interrupts: runtime-url /api/copilotkit 404 on Vite, and the backend section is prose only (works with the quickstart agent, which picks up the frontend tool)
+- #51 State streaming links are dead: Shared State, Render agent state in your app and Agent Read-Only Context link `/vue/shared-state/streaming` (308 to the LangGraph Python page), Sub-Agents links `/vue/google-antigravity/shared-state/streaming` (308 back to Shared State); the page is gone (2026-11-18).
 - #45 Governed Actions: no backend shown: nothing makes the agent call approve_governed_action or emit an interrupt with metadata.action; executeSideEffect in handleApproval undefined
-- #50 Doubled `/vue/` in in-content links (2026-11-11 drift check), on top of #29/#31/#41: Headless UI -> `.../vue/custom-look-and-feel/slots` and `/css`; Tool-based -> `.../vue/generative-ui/tool-rendering` and `/vue/human-in-the-loop`; Prebuilt Components -> `.../vue/prebuilt-components/chat`, `/chat-controls`, `/popup`, `/sidebar`; Threads Drawer / Headless Threads -> `.../vue/threads-lifecycle`, `/vue/headless-threads`, `/vue/AG-UI-Streams`, and Headless Threads also `/vue/prebuilt-components/copilot-threads-drawer`; Programmatic control -> `.../vue/custom-look-and-feel/headless-ui`; the Vue quickstart (`/vue/google-antigravity`) -> `.../vue/AG-UI-Streams`, `/vue/prebuilt-components/copilot-threads-drawer`. All 404 (still the same on 2026-11-12). Inspector also links `/vue/google-antigravity/react-native` (404).
 
 ## Build-only (`vue-tsc` / `vite build`; `npm run dev` runs fine)

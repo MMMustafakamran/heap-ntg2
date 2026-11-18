@@ -1,4 +1,4 @@
-// HARNESS: no Vue page shows how to register an Antigravity agent (FINDINGS.md #1).
+// HARNESS: no Vue page shows how to register an Antigravity agent (FINDINGS.md #9).
 // This is the quickstart server.ts with BuiltInAgent replaced by the React quickstart's
 // HttpAgent, pointed at this repo's own Antigravity quickstart backend (../backend, :8141).
 import { createServer } from "node:http";

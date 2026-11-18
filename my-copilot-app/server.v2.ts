@@ -1,5 +1,5 @@
 // HARNESS: group V2 runtime (port 8147), copied from server.antigravity.ts. No Vue page shows how to
-// register an Antigravity agent (FINDINGS.md #1), so each agent id the V2 pages use is an HttpAgent
+// register an Antigravity agent (FINDINGS.md #9), so each agent id the V2 pages use is an HttpAgent
 // to this repo's backend on 8143 (backend/v2_main.py).
 // Two runtimes on one port, chosen by path:
 //   /api/copilotkit      -> plain runtime (Components as Tools, Tool Rendering, State Rendering, Threads pages)

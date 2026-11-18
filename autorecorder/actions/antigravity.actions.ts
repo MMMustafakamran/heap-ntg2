@@ -26,9 +26,10 @@ import { type DocEvidence, showFinding } from './doc-evidence';
 import { registerDocEvidence } from '../core/doc-evidence';
 
 export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
+  // FINDINGS.md #9 (texts checked on the rendered page 2026-11-18)
   quickstart: [
-    { text: 'Build with Google Antigravity', caption: 'The Vue quickstart URL shows the Antigravity landing page, not Vue steps' },
-    { text: 'import type { NextRequest } from "next/server";', caption: 'The only code on the page is a Next.js route' },
+    { text: "use your framework's quickstart for the runtime wiring so it registers your agent instead", caption: 'The Antigravity Vue quickstart sends agent owners to their framework quickstart, i.e. this page' },
+    { text: 'default: new BuiltInAgent({', caption: 'The only runtime on the page registers BuiltInAgent (OpenAI), no Antigravity agent' },
   ],
 };
 // Highlighted in the doc step (before the IDE). This repo has no level-2 (KNOWN_ISSUE) pages, so no skip list.
@@ -36,10 +37,11 @@ registerDocEvidence(FINDING_EVIDENCE);
 
 /** Finding clips end with the finding typed into Notepad (REPOS.md Rule 6). */
 const QUICKSTART_FINDING = [
-  "vue quickstart should walk u thru a working vue app",
-  "the url just shows the antigravity landing page and the embedded demo is a 404",
-  "the only code is a next.js route.ts, no create vue step, no copilotkit vue install and no server",
-  "so i wired the vue app myself and there is nothing to follow",
+  "antigravity vue quickstart should hook a vue app up to an antigravity agent",
+  "its just the generic vue page now, the runtime registers builtinagent with an openai model",
+  "no antigravity backend, no pip install, no httpagent anywhere",
+  "and the callout says if u already have an agent use ur frameworks quickstart,thats this page",
+  "so i had to wire the antigravity agent into the runtime myself",
 ].join('\n');
 
 export const runVueQuickstartAction: PageActionHandler = async (page, config, root, ctx) => {
