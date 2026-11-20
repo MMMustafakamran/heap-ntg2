@@ -7,23 +7,11 @@
   },
   {
    "at": "evidence",
-   "text": "So this is the problem, the delegation log section says the frontend renders it, but there's no code."
-  },
-  {
-   "at": "evidence#2",
-   "text": "And the install step doesn't include httpx, umm, which the sub agents file imports."
-  },
-  {
-   "at": "evidence#3",
-   "text": "And this common module is never shown."
+   "text": "So this is the problem, umm, the delegation log section says the frontend renders it, but there's no Vue code for it."
   },
   {
    "at": "ide",
    "text": "This is my project, I've implemented the exact code from the doc."
-  },
-  {
-   "at": "+",
-   "text": "This part wasn't on the page, httpx and the common file, so I had to add them myself."
   },
   {
    "at": "demo",
@@ -31,7 +19,7 @@
   },
   {
    "at": "notepad",
-   "text": "So basically, as written the server crashes on httpx, and even with my fixes there's no Vue code for the delegation log."
+   "text": "So basically, the only frontend code for the log is the React one in the code tab and the showcase, there's no Vue version, so a Vue app can't show the log."
   },
   {
    "at": "+",

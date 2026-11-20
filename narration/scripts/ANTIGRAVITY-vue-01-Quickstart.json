@@ -27,7 +27,7 @@
   },
   {
    "at": "notepad",
-   "text": "So basically, this is just the generic Vue setup with the built in agent, there's no Antigravity backend or wiring at all, so you have to guess it."
+   "text": "So basically, it only wires CopilotKit's own built in agent, there's no step that connects an Antigravity agent, so you have to guess it."
   },
   {
    "at": "+",

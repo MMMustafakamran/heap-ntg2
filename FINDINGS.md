@@ -5,13 +5,9 @@ Stack: `@copilotkit/vue`/`runtime` 1.89.0 (npm latest, CI 2026-11-18), `vue` 3.5
 ## Dev blockers (seen with `npm run dev` and normal use of the page)
 
 ### [Quickstart](https://docs.copilotkit.ai/vue/google-antigravity/quickstart)
-**#9 The Antigravity Vue quickstart is the generic Vue + BuiltInAgent page: nothing on it connects an Antigravity agent.**
+**#9 The Vue quickstart only wires CopilotKit's own BuiltInAgent; no step connects an Antigravity agent.**
 - **Doc:** https://docs.copilotkit.ai/vue/google-antigravity/quickstart (the sidebar's Quickstart, `/vue/google-antigravity`, shows the same page). The only runtime is `server.ts` with `default: new BuiltInAgent({ model: "openai:gpt-6-luna", ... })`, and the callout says "If you already have a LangGraph, CrewAI, Mastra, ADK, Pydantic AI, or other agent, use your framework's quickstart for the runtime wiring so it registers your agent instead." This is that framework's quickstart.
 - **Result:** the published steps run (re-checked 2026-11-18: `npx tsx server.ts` with an OpenAI key streams a reply), but the chat talks to CopilotKit's own OpenAI agent. There is no Antigravity backend, no `pip install ag-ui-antigravity`, no `HttpAgent` and no Gemini key anywhere on the page, so a reader can't get a Vue app on an Antigravity agent. **Confirmed by harness:** `server.antigravity.ts` (HttpAgent -> own Antigravity backend) is the harness's own guess.
-
-### [Tool Rendering](https://docs.copilotkit.ai/vue/google-antigravity/generative-ui/tool-rendering)
-**#19 backend snippet uses build(), SYSTEM_PROMPT and 3 tools that are never shown; needed showcase code to run. Card also reads city but the backend tool arg is location.**
-- Doc: TOOLS = [get_weather, search_flights, get_stock_price, roll_d20] / def tool_rendering_agent(): return build(system_instructions=SYSTEM_PROMPT, tools=TOOLS) / Result: build, SYSTEM_PROMPT and three of the four tools are never shown or imported (NameError as published). With showcase code filled in, the card renders but the city heading is empty: the frontend reads parameters.city while the backend get_weather takes location.
 
 ### [Agent Read-Only Context](https://docs.copilotkit.ai/vue/google-antigravity/shared-state/agent-readonly)
 **#35 the agent never sees the useAgentContext value (asked which workspace, it answered C:/srv/agents/w1, not northstar). The Antigravity adapter needs experimental_app_context=True on the agent, which the page never mentions.**
@@ -22,10 +18,12 @@ Stack: `@copilotkit/vue`/`runtime` 1.89.0 (npm latest, CI 2026-11-18), `vue` 3.5
 - Doc: `const orders = await searchOrders(status);` in OrderSearch.vue / Result: searchOrders is never defined or imported; the chat never replies when the tool is asked for. The WebMCP side (document.modelContext) needs Chrome 149 + flag, not testable in the probe browser.
 
 ### [Sub-Agents](https://docs.copilotkit.ai/vue/google-antigravity/multi-agent/subagents)
-**#47 the delegation-log frontend section has no code, and subagents.py needs httpx (not in the install step) and agents._common, which is never shown.**
-- Doc: 'Rendering a live delegation log' says "On the frontend, the delegation log is a reactive render of the `delegations` slot." with no code; install is `pip install ag-ui-antigravity google-antigravity` but subagents.py does `import httpx`; `from agents._common import ...` is never published / Error: ModuleNotFoundError: No module named 'httpx'. With harness fixes the supervisor replies, but there is no delegation log (no Vue frontend on the page).
+**#47 the delegation-log section has no frontend code, and the only one given (Code tab / showcase) is React: no Vue version.**
+- Doc: 'Rendering a live delegation log' says "On the frontend, the delegation log is a reactive render of the `delegations` slot." with no code; the page's Code tab shows only `page.tsx` / `delegation-log.tsx` (React) and links the React showcase (showcase/integrations/google-antigravity/src/app/demos/subagents). / Result: the supervisor replies, but a Vue reader has no delegation-log component to render, so no log shows.
 
 ## Minor notes
+- #19 Tool Rendering: backend snippet calls build() and SYSTEM_PROMPT and lists 3 tools it never shows; works with get_weather on your own agent
+- #47 Sub-Agents (minor part): subagents.py imports httpx, not in the install step; agents._common comes from the linked showcase
 - #5 Frontend Tools: `zod` is imported but no Vue install step adds it. It resolves only transitively (3.25.76).
 - #4 Frontend Tools: `runtime-url="/api/copilotkit"` is relative; a Vite app has no `/api` route, so `/api/copilotkit/info` 404s and the chat sends nothing until it points at the runtime server.
 - #8 When the model call fails, the Vue chat shows nothing: no error, no message (re-checked 2026-11-12 with an invalid Gemini key: the backend logs `Antigravity run failed`, the chat stays blank under the user message).

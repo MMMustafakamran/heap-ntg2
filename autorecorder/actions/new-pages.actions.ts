@@ -26,19 +26,6 @@ async function promptAndWaitFor(page: Page, config: PageRecordConfig, text: RegE
 }
 
 export const NEW_FINDINGS: Record<string, NewFinding> = {
-  // FINDINGS.md #19, #20
-  'tool-rendering': {
-    evidence: [
-      { text: 'return build(system_instructions=SYSTEM_PROMPT, tools=TOOLS)', caption: 'build, SYSTEM_PROMPT and 3 of the 4 tools never shown' },
-      { text: 'parameters: z.object({ city: z.string() }),', caption: 'card reads city, backend arg is location' },
-    ],
-    note: [
-      "page says the weather tool call renders as a card",
-      "asked weather in tokyo, card shows up but no city name in it",
-      "backend uses build, system_prompt and 3 tools that are never shown, so it nameerrors as written and i pulled them from the showcase",
-      "card reads city but get_weather takes location, so the names dont match",
-    ].join('\n'),
-  },
   // FINDINGS.md #35
   'shared-state-readonly': {
     evidence: [
@@ -68,23 +55,22 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       if (!/order/i.test(text.replace(config.prompt, ''))) ctx.fail('The agent never replied after the searchOrders tool was asked for');
     },
   },
-  // FINDINGS.md #47
+  // FINDINGS.md #47 (re-audit 2026-11-20: blocker is the missing Vue delegation log; httpx / _common are minor)
   subagents: {
     evidence: [
-      { text: 'On the frontend, the delegation log is a reactive render of the', caption: 'no frontend code for the delegation log' },
-      { text: 'pip install ag-ui-antigravity google-antigravity', caption: 'install step misses httpx' },
-      { text: 'from agents._common import MODEL, aimock_headers, api_key, gemini_base_url', caption: 'agents._common never published' },
+      { text: 'On the frontend, the delegation log is a reactive render of the', caption: 'no Vue frontend code for the delegation log' },
     ],
     // The supervisor delegates to three sub-agents before it answers: give it two minutes.
     demo: async (page, config, _root, ctx) => {
       if (!(await promptAndWaitFor(page, config, /scatter|Rayleigh|wavelength/i, 120000))) ctx.fail('The supervisor never replied');
     },
     note: [
-      "page says the frontend shows a delegation log of the sub agents",
-      "with my fixes it replies but theres no delegation log anywhere",
-      "as written server crashes,modulenotfound no module named httpx,install step misses it",
-      "agents._common never shown and the log section has no code",
-    ].join('\n'),
+      "page says the frontend shows a live delegation log of the sub agents",
+      "supervisor replies but theres no delegation log anywhere",
+      "the log section has no code and the only one given,code tab and showcase,is react tsx",
+      "no vue version so a vue app cant render the log",
+    ].join('
+'),
   },
 };
 

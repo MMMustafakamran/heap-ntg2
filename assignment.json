@@ -143,7 +143,7 @@
     9
    ],
    "notes": [
-    "Issue: the Vue quickstart is the generic Vue + BuiltInAgent page; the only runtime registers CopilotKit's own OpenAI agent and nothing connects an Antigravity agent (no backend, no ag-ui-antigravity, no HttpAgent). Its callout tells agent owners to use their framework's quickstart, which is this page."
+    "Issue: the Vue quickstart only wires CopilotKit's own BuiltInAgent; no step connects an Antigravity agent (no backend, no ag-ui-antigravity, no HttpAgent)."
    ],
    "block": null,
    "links": [
@@ -379,13 +379,13 @@
    "child": true,
    "docPath": "generative-ui/tool-rendering",
    "reachable": "sidebar",
-   "status": "❌",
+   "status": "✅",
    "findings": [
     19,
     20
    ],
    "notes": [
-    "Issue: backend snippet uses build(), SYSTEM_PROMPT and 3 tools that are never shown; needed showcase code to run. Card also reads city but the backend tool arg is location."
+    "Note: the backend snippet calls build() and SYSTEM_PROMPT and lists 3 tools it never shows; it works with get_weather on your own agent, but the card's city heading stays empty (card reads city, the tool takes location)."
    ],
    "block": null,
    "links": [
@@ -393,7 +393,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-13-ToolRendering",
      "loom": "https://www.loom.com/share/3b24d5d7be7d450aaa6978e0e5347d4a",
-     "narration": "narration/scripts/ANTIGRAVITY-vue-15-ToolRendering.json",
+     "narration": null,
      "filmed": "2026-11-18"
     }
    ],
@@ -711,7 +711,7 @@
     51
    ],
    "notes": [
-    "Issue: the delegation-log frontend section has no code, and subagents.py needs httpx (not in the install step) and agents._common, which is never shown."
+    "Issue: the delegation-log section has no frontend code, and the only one given (Code tab / showcase) is React; there is no Vue version, so a Vue reader gets no delegation log."
    ],
    "block": null,
    "links": [
@@ -761,5 +761,5 @@
    "added": "2026-11-10"
   }
  ],
- "quickstartBlocked": "the Vue quickstart is the generic Vue page with a BuiltInAgent (OpenAI) runtime; nothing on it connects an Antigravity agent, so a reader has no Vue app on Antigravity to build on"
+ "quickstartBlocked": "the Vue quickstart only wires CopilotKit's own BuiltInAgent; no step connects an Antigravity agent, so a reader has no Vue app on Antigravity to build on"
 }

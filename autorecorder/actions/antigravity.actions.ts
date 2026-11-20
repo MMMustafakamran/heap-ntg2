@@ -38,8 +38,8 @@ registerDocEvidence(FINDING_EVIDENCE);
 /** Finding clips end with the finding typed into Notepad (REPOS.md Rule 6). */
 const QUICKSTART_FINDING = [
   "antigravity vue quickstart should hook a vue app up to an antigravity agent",
-  "its just the generic vue page now, the runtime registers builtinagent with an openai model",
-  "no antigravity backend, no pip install, no httpagent anywhere",
+  "it only wires copilotkits own builtinagent with an openai model",
+  "no step connects an antigravity agent,no backend no pip install no httpagent",
   "and the callout says if u already have an agent use ur frameworks quickstart,thats this page",
   "so i had to wire the antigravity agent into the runtime myself",
 ].join('\n');
