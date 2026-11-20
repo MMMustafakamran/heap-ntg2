@@ -212,7 +212,9 @@ export const PAGES = definePages([
   { id: 'governed-actions', name: 'Governed Actions (Vue)', videoName: 'GovernedActions', docPath: 'human-in-the-loop/governed-actions', route: '/governed-actions',
     ideFile: 'my-copilot-app/src/components/v4/governed/GovernedActionTool.vue', startLine: 1, endLine: 24,
     extraTabs: [{ filePath: 'my-copilot-app/src/components/v4/governed/GovernedActionCard.vue', startLine: 1, endLine: 44 }, { filePath: 'my-copilot-app/src/components/v4/governed/GovernedActionApproval.vue', startLine: 1, endLine: 58 }, { filePath: 'my-copilot-app/src/pages/GovernedActionsApp.vue', startLine: 1, endLine: 14 }],
-    prompt: 'Send an email to bob at example dot com saying hi. Before sending, call approve_governed_action with id a1, summary Send email to Bob, tool send_email, reference POL-7, verdict require_approval.', waitAfterPromptMs: 5000 },
+    prompt: 'Send an email to bob at example dot com saying hi. Before sending, call approve_governed_action with id a1, summary Send email to Bob, tool send_email, reference POL-7, verdict require_approval.', waitAfterPromptMs: 5000,
+    // HARNESS (review 2026-11-20): the feature is the approval card, not a text reply; wait for it, then approve.
+    demo: { render: { selector: 'button:has-text("Approve and run")', timeoutMs: 90000, required: 'no approval card rendered' }, click: { selector: 'button:has-text("Approve and run")', missing: 'approve button never showed' } } },
   { id: 'webmcp', name: 'WebMCP (Vue)', videoName: 'WebMcp', docPath: 'webmcp', route: '/webmcp',
     ideFile: 'my-copilot-app/src/components/v4/webmcp/OrderSearch.vue', startLine: 1, endLine: 21,
     extraTabs: [{ filePath: 'my-copilot-app/src/pages/WebmcpApp.vue', startLine: 1, endLine: 11, addedText: '// HARNESS: the WebMCP page shows OrderSearch.vue only ("must run inside your existing CopilotKitProvider"); provider + chat from the quickstart.' }],
