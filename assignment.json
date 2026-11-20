@@ -150,9 +150,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-01-Quickstart",
-     "loom": "https://www.loom.com/share/c85d6ea25c244bd9930273347eaf48ea",
+     "loom": "https://www.loom.com/share/922cdd73ea9e4ed4a1e3ea4385b3a8ee",
      "narration": "narration/scripts/ANTIGRAVITY-vue-01-Quickstart.json",
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-20"
     }
    ],
    "review": {
@@ -270,7 +270,15 @@
     "Note: the page shows no runtime code for Intelligence and agent-id=\"support\" is never registered (added in the harness)."
    ],
    "block": null,
-   "links": [],
+   "links": [
+    {
+     "text": "Threads Drawer - Vue",
+     "clip": "ANTIGRAVITY-vue-10-ThreadsDrawer",
+     "loom": "https://www.loom.com/share/5a982131a00e4c6db5c499ac4994d1dc",
+     "narration": null,
+     "filmed": "2026-11-20"
+    }
+   ],
    "review": {
     "verdict": null,
     "approvedAt": null,
@@ -392,9 +400,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-13-ToolRendering",
-     "loom": "https://www.loom.com/share/3b24d5d7be7d450aaa6978e0e5347d4a",
+     "loom": "https://www.loom.com/share/e9bf3dea32854012bcc2ccc3ed101077",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-20"
     }
    ],
    "review": {
@@ -424,10 +432,10 @@
    "links": [
     {
      "text": null,
-     "clip": "ANTIGRAVITY-vue-17-McpApps",
-     "loom": "https://www.loom.com/share/d2488f468fbb448487a094ec88c02c25",
+     "clip": "ANTIGRAVITY-vue-14-McpApps",
+     "loom": "https://www.loom.com/share/f020733840b8418590e9087fc401e9d4",
      "narration": null,
-     "filmed": "2026-11-12"
+     "filmed": "2026-11-20"
     }
    ],
    "review": {
@@ -653,9 +661,10 @@
    "links": [
     {
      "text": null,
-     "clip": "ANTIGRAVITY-vue-21-GovernedActions",
-     "loom": null,
-     "narration": null
+     "clip": "ANTIGRAVITY-vue-18-GovernedActions",
+     "loom": "https://www.loom.com/share/27f4ba4e678143da9d6c1624f8169d99",
+     "narration": null,
+     "filmed": "2026-11-20"
     }
    ],
    "review": {
@@ -685,8 +694,8 @@
     {
      "text": "WebMCP - Vue",
      "clip": "ANTIGRAVITY-vue-19-WebMcp",
-     "loom": "https://www.loom.com/share/2d44f755c12e48f2bee10019eae08f29",
-     "filmed": "2026-11-18"
+     "loom": "https://www.loom.com/share/b9287347950f416a800a74154f0bb6c1",
+     "filmed": "2026-11-20"
     }
    ],
    "review": {
@@ -717,9 +726,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-20-SubAgents",
-     "loom": "https://www.loom.com/share/10407c193274425bb0fbe5194a9e46a8",
+     "loom": "https://www.loom.com/share/3c7e6d04008445539b68a1383fcc6dd3",
      "narration": "narration/scripts/ANTIGRAVITY-vue-23-SubAgents.json",
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-20"
     }
    ],
    "review": {
