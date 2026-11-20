@@ -69,8 +69,7 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       "supervisor replies but theres no delegation log anywhere",
       "the log section has no code and the only one given,code tab and showcase,is react tsx",
       "no vue version so a vue app cant render the log",
-    ].join('
-'),
+    ].join('\n'),
   },
 };
 
