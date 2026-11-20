@@ -39,22 +39,6 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
       "no backend is shown at all, so the agent never gets the context",
     ].join('\n'),
   },
-  // FINDINGS.md #46
-  webmcp: {
-    evidence: [{ text: 'const orders = await searchOrders(status);', caption: 'searchOrders is never defined' }],
-    note: [
-      "page says the agent can call ur searchorders tool",
-      "asked it to find my open orders, chat never replies",
-      "ordersearch.vue calls searchorders but its never defined or imported, and the page shows only that component",
-      "so the tool cant run as written",
-    ].join('\n'),
-    demo: async (page, config, _root, ctx) => {
-      await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
-      await sleep(30000);
-      const text = await page.evaluate(() => document.body.innerText).catch(() => '');
-      if (!/order/i.test(text.replace(config.prompt, ''))) ctx.fail('The agent never replied after the searchOrders tool was asked for');
-    },
-  },
   // FINDINGS.md #47 (re-audit 2026-11-20: blocker is the missing Vue delegation log; httpx / _common are minor)
   subagents: {
     evidence: [

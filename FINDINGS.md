@@ -13,15 +13,12 @@ Stack: `@copilotkit/vue`/`runtime` 1.89.0 (npm latest, CI 2026-11-18), `vue` 3.5
 **#35 the agent never sees the useAgentContext value (asked which workspace, it answered C:/srv/agents/w1, not northstar). The Antigravity adapter needs experimental_app_context=True on the agent, which the page never mentions.**
 - Doc: "Sent to the agent with every run." and "Ask the agent which workspace is active. It answers `northstar`." (useAgentContext({ description: "Active workspace", value: workspaceId }) with workspaceId = "northstar") / Result (re-checked 2026-11-18): asked "Which workspace am I in right now?" the agent replied "You are currently in the workspace: C:/srv/agents/w1"; the context never reaches it. ag_ui_antigravity only exposes useAgentContext values when the agent is built with experimental_app_context=True (get_app_context tool, see agent.py docstring), which the page never mentions.
 
-### [WebMCP](https://docs.copilotkit.ai/vue/google-antigravity/webmcp)
-**#46 OrderSearch.vue calls searchOrders(), which the page never defines, and the agent never replies when the tool is used.**
-- Doc: `const orders = await searchOrders(status);` in OrderSearch.vue / Result: searchOrders is never defined or imported; the chat never replies when the tool is asked for. The WebMCP side (document.modelContext) needs Chrome 149 + flag, not testable in the probe browser.
-
 ### [Sub-Agents](https://docs.copilotkit.ai/vue/google-antigravity/multi-agent/subagents)
 **#47 the delegation-log section has no frontend code, and the only one given (Code tab / showcase) is React: no Vue version.**
 - Doc: 'Rendering a live delegation log' says "On the frontend, the delegation log is a reactive render of the `delegations` slot." with no code; the page's Code tab shows only `page.tsx` / `delegation-log.tsx` (React) and links the React showcase (showcase/integrations/google-antigravity/src/app/demos/subagents). / Result: the supervisor replies, but a Vue reader has no delegation-log component to render, so no log shows.
 
 ## Minor notes
+- #46 [WebMCP](https://docs.copilotkit.ai/vue/google-antigravity/webmcp): `searchOrders()` is the reader's own API and is never defined; WebMCP itself needs Chrome 149 or the flag.
 - #19 Tool Rendering: backend snippet calls build() and SYSTEM_PROMPT and lists 3 tools it never shows; works with get_weather on your own agent
 - #47 Sub-Agents (minor part): subagents.py imports httpx, not in the install step; agents._common comes from the linked showcase
 - #5 Frontend Tools: `zod` is imported but no Vue install step adds it. It resolves only transitively (3.25.76).

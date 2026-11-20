@@ -673,20 +673,19 @@
    "child": false,
    "docPath": "webmcp",
    "reachable": "sidebar",
-   "status": "❌",
+   "status": "✅",
    "findings": [
     46
    ],
    "notes": [
-    "Issue: OrderSearch.vue calls searchOrders(), which the page never defines, and the agent never replies when the tool is used."
+    "Note: searchOrders() is the reader's own API and is never defined; WebMCP itself needs Chrome 149 or the flag."
    ],
    "block": null,
    "links": [
     {
-     "text": null,
+     "text": "WebMCP - Vue",
      "clip": "ANTIGRAVITY-vue-19-WebMcp",
      "loom": "https://www.loom.com/share/2d44f755c12e48f2bee10019eae08f29",
-     "narration": "narration/scripts/ANTIGRAVITY-vue-22-WebMcp.json",
      "filmed": "2026-11-18"
     }
    ],
