@@ -4,9 +4,9 @@
  "repo": "Antigravity-vue",
  "docBase": "https://docs.copilotkit.ai/vue/google-antigravity/",
  "versions": {
-  "@copilotkit/vue": "1.89.0",
-  "@copilotkit/runtime": "1.89.0",
-  "vue": "3.5.45",
+  "@copilotkit/vue": "1.90.0",
+  "@copilotkit/runtime": "1.90.0",
+  "vue": "3.5.46",
   "vite": "8.3.8",
   "tsx": "4.23.15"
  },
@@ -534,7 +534,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-05-SharedStateReadonly",
      "loom": "https://www.loom.com/share/ff4fbfdb01c144a5b12216692ecc13f7",
-     "narration": "narration/scripts/ANTIGRAVITY-vue-06-SharedStateReadonly.json",
+     "narration": "narration/scripts/ANTIGRAVITY-vue-05-SharedStateReadonly.json",
      "filmed": "2026-11-18"
     }
    ],

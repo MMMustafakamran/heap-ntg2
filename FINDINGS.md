@@ -1,6 +1,6 @@
 # Findings — Antigravity-vue
 Open doc defects only. A finding is proposed first and added only after the owner approves it (Claude Code proposes after the daily review and the owner approves locally: `.qa/instructions/QA-RULES.md` section 6). The entries from the 2026-11-04 Antigravity assignment were logged directly and reviewed by the owner at the end, a one-off exception that does not apply to new findings. Numbers are stable IDs (code cites `FINDINGS.md #N`), so gaps are removed findings.
-Stack: `@copilotkit/vue`/`runtime` 1.89.0 (npm latest, CI 2026-11-18), `vue` 3.5.45 (declared ^3.5.42), `vite` 8.3.8 (declared ^8.2.2), `tsx` 4.23.15, backend `ag-ui-antigravity` 0.2.1, `google-antigravity` 0.1.23, `google-genai` 3.5.0, Node 26.7.0, npm 12, Windows 11. Docs: https://docs.copilotkit.ai/vue/google-antigravity (snapshot 2026-11-18)
+Stack: `@copilotkit/vue`/`runtime` 1.90.0 (npm latest, CI 2026-11-23), `vue` 3.5.46 (declared ^3.5.42), `vite` 8.3.8 (declared ^8.2.2), `tsx` 4.23.15, backend `ag-ui-antigravity` 0.2.1, `google-antigravity` 0.1.24, `google-genai` 3.6.1, Node 26.7.0, npm 12, Windows 11. Docs: https://docs.copilotkit.ai/vue/google-antigravity (snapshot 2026-11-18)
 
 ## Dev blockers (seen with `npm run dev` and normal use of the page)
 

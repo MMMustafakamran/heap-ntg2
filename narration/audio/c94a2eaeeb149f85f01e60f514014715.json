@@ -2,8 +2,8 @@
  "text": "And here it says, umm, the agent answers northstar.",
  "model": "s2.1-pro-free",
  "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
- "duration": 5.155,
+ "duration": 5.341,
  "file": "c94a2eaeeb149f85f01e60f514014715.mp3",
- "clip": "ANTIGRAVITY-vue-06-SharedStateReadonly",
+ "clip": "ANTIGRAVITY-vue-05-SharedStateReadonly",
  "at": "evidence#2"
 }
