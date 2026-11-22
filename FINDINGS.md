@@ -33,6 +33,7 @@ Stack: `@copilotkit/vue`/`runtime` 1.89.0 (npm latest, CI 2026-11-18), `vue` 3.5
 - #48 Threads Drawer: page shows no runtime code for Intelligence and agent-id="support" is never registered; public-license-key="ck_pub_..." is a placeholder (not needed once the runtime has CPK_INTELLIGENCE_API_KEY)
 - #49 Headless Threads: server.ts uses agent and verifyAppSession without defining them and registers only default, while App.vue uses agent-id="my-agent"
 - #18 Components as Tools: imports zod but no install step adds it (present only transitively)
+- Sub-Agents: links /vue/google-antigravity/shared-state/streaming, which now 404s (dead link, seen 2026-11-23)
 - #20 Tool Rendering: WeatherToolCard reads parameters.city, backend arg is location: card shows result JSON with no city name
 - #23 MCP Apps: runtime `mcpApps` server url is the placeholder `https://mcp.example.com/mcp`; with a real MCP server (Excalidraw) the app renders in the chat (re-checked 2026-11-12)
 - #24 MCP Apps: server snippet: `agent` never defined
