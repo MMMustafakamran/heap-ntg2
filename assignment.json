@@ -150,9 +150,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-01-Quickstart",
-     "loom": "https://www.loom.com/share/922cdd73ea9e4ed4a1e3ea4385b3a8ee",
+     "loom": "https://www.loom.com/share/e7f4ebbbc3ef446ebcd00b93adfcbcf9",
      "narration": "narration/scripts/ANTIGRAVITY-vue-01-Quickstart.json",
-     "filmed": "2026-11-20"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -182,9 +182,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-06-PrebuiltComponents",
-     "loom": "https://www.loom.com/share/cbc2e21d25c843ea8153d33f291963c7",
+     "loom": "https://www.loom.com/share/fe8a834ea78943eda11abaccea4b79dd",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -212,9 +212,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-07-Slots",
-     "loom": "https://www.loom.com/share/344664348d194dddbfc086e4e2a0e03c",
+     "loom": "https://www.loom.com/share/87619bc890624665881b027ca7391e5b",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -242,9 +242,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-08-HeadlessUi",
-     "loom": "https://www.loom.com/share/791e94e0ad7842e3970494c802cd2186",
+     "loom": "https://www.loom.com/share/96496c7944e64b20853dc7f5351a7e8a",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -274,9 +274,9 @@
     {
      "text": "Threads Drawer - Vue",
      "clip": "ANTIGRAVITY-vue-10-ThreadsDrawer",
-     "loom": "https://www.loom.com/share/5a982131a00e4c6db5c499ac4994d1dc",
+     "loom": "https://www.loom.com/share/06b3c9f68b9f438f85a0b1280790808c",
      "narration": null,
-     "filmed": "2026-11-20"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -306,8 +306,8 @@
    "links": [
     {
      "clip": "ANTIGRAVITY-vue-11-HeadlessThreads",
-     "loom": "https://www.loom.com/share/d54639406ff14386951e2e707e596b57",
-     "filmed": "2026-11-18"
+     "loom": "https://www.loom.com/share/2992ef25e5e848be8e1672dbfb3b51e5",
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -338,9 +338,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-02-FrontendTools",
-     "loom": "https://www.loom.com/share/6f9e91d5ab7a4de3af49cc423b86fb08",
+     "loom": "https://www.loom.com/share/6fdcef0b8cb44ff99e2c28ee92f7e29a",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -367,9 +367,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-12-ToolBased",
-     "loom": "https://www.loom.com/share/610eaad68c6444928921360d9b24a2c3",
+     "loom": "https://www.loom.com/share/a972f5cab71448598621832fb3f8ed69",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -400,9 +400,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-13-ToolRendering",
-     "loom": "https://www.loom.com/share/e9bf3dea32854012bcc2ccc3ed101077",
+     "loom": "https://www.loom.com/share/051de1bf61ed409ea49e5f1ed67956c2",
      "narration": null,
-     "filmed": "2026-11-20"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -433,9 +433,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-14-McpApps",
-     "loom": "https://www.loom.com/share/f020733840b8418590e9087fc401e9d4",
+     "loom": "https://www.loom.com/share/f9519562dc26406cb9859b6338c8080b",
      "narration": null,
-     "filmed": "2026-11-20"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -468,9 +468,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-03-SharedState",
-     "loom": "https://www.loom.com/share/1ceb16cb2f1e4515893f9d91e3143e33",
+     "loom": "https://www.loom.com/share/d806246bfa894b6781ac894513bf3beb",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -499,9 +499,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-04-SharedStateRendering",
-     "loom": "https://www.loom.com/share/ee7e86551ef241658f981810ba7c8d29",
+     "loom": "https://www.loom.com/share/f27dd8407f8e43dbbc65ae4968eeb183",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -533,9 +533,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-05-SharedStateReadonly",
-     "loom": "https://www.loom.com/share/ff4fbfdb01c144a5b12216692ecc13f7",
+     "loom": "https://www.loom.com/share/c7d2d865988f4a6eaae92f78a6d24ec5",
      "narration": "narration/scripts/ANTIGRAVITY-vue-05-SharedStateReadonly.json",
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -566,9 +566,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-15-HumanInTheLoop",
-     "loom": "https://www.loom.com/share/5b2fdf915c1849fb9cb024bb0b6fc715",
+     "loom": "https://www.loom.com/share/f7d3a0d9c23e40b881baf536540f2d7e",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -598,9 +598,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-16-UseInterrupt",
-     "loom": "https://www.loom.com/share/fe47c3db1f584a1d9e63cfe37843ef0c",
+     "loom": "https://www.loom.com/share/64445ac7158b43d892cf5bd3e931b4cb",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -630,9 +630,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-17-HeadlessInterrupts",
-     "loom": "https://www.loom.com/share/e75fbf6518cb4b949f0b418e587aa49f",
+     "loom": "https://www.loom.com/share/63c6483ed8964094a9c791b9a0ca6e2b",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -662,9 +662,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-18-GovernedActions",
-     "loom": "https://www.loom.com/share/27f4ba4e678143da9d6c1624f8169d99",
+     "loom": "https://www.loom.com/share/8c5b7d40172944958f6b39795add8faf",
      "narration": null,
-     "filmed": "2026-11-20"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -694,8 +694,8 @@
     {
      "text": "WebMCP - Vue",
      "clip": "ANTIGRAVITY-vue-19-WebMcp",
-     "loom": "https://www.loom.com/share/b9287347950f416a800a74154f0bb6c1",
-     "filmed": "2026-11-20"
+     "loom": "https://www.loom.com/share/c5a8174b74244f87857ec0ae370b0e4f",
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -726,9 +726,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-20-SubAgents",
-     "loom": "https://www.loom.com/share/3c7e6d04008445539b68a1383fcc6dd3",
+     "loom": "https://www.loom.com/share/fa0f97f96b6d4eeeb1c00804b4233561",
      "narration": "narration/scripts/ANTIGRAVITY-vue-23-SubAgents.json",
-     "filmed": "2026-11-20"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
@@ -756,9 +756,9 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-09-Inspector",
-     "loom": "https://www.loom.com/share/1b90df9e5e284826a95f9148e65bc618",
+     "loom": "https://www.loom.com/share/246f15df9154429086f95414be62da86",
      "narration": null,
-     "filmed": "2026-11-18"
+     "filmed": "2026-11-23"
     }
    ],
    "review": {
