@@ -42,7 +42,10 @@ export async function executePageAction(
   ctx: ActionContext,
 ): Promise<void> {
   // Vite serves modules lazily, so markup can be on screen before anything is wired to it.
-  await waitForPageReady(page, { label: config.id });
+  // The headless page has its own <input aria-label="Message">, not the chat textarea: without this
+  // the ready check waited its full 30 s on camera (review 2026-11-23).
+  const inputSelector = config.id === 'headless-ui' ? 'input[aria-label="Message"]' : undefined;
+  await waitForPageReady(page, { label: config.id, ...(inputSelector ? { inputSelector } : {}) });
 
   const handler = ACTION_MAP[config.id] ?? runStandardAction;
   await handler(page, config, rootPath, ctx);
