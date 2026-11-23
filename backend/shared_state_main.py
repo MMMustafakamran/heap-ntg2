@@ -56,7 +56,6 @@ agent = AntigravityAgent(
     system_instructions=READ_WRITE_PROMPT,
     tools=[set_notes],
     experimental_app_state=True,
-    experimental_app_context=True,  # HARNESS: Agent Read-Only Context page never mentions it; without it useAgentContext never reaches the agent (FINDINGS.md #35, minor)
     workspaces=["/srv/agents/w1"],
 )
 

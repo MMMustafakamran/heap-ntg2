@@ -1,0 +1,34 @@
+{
+ "clip": "ANTIGRAVITY-vue-05-SharedStateReadonly",
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so this is the agent read only context page for Vue with Google Antigravity, and I'm reporting a problem on this page."
+  },
+  {
+   "at": "evidence",
+   "text": "So this is the problem, the page says these values are sent to the agent with every run."
+  },
+  {
+   "at": "evidence#2",
+   "text": "And here it says, umm, the agent answers northstar."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. I asked which workspace I'm in, it should say northstar, but uh, it answered some server path."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the agent never sees the context, because the Antigravity adapter needs experimental app context turned on, and the page never says that."
+  },
+  {
+   "at": "+",
+   "text": "Alright, that's the issue, kindly sort it out."
+  }
+ ],
+ "page": "shared-state-readonly"
+}

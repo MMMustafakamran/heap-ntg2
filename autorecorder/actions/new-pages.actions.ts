@@ -26,6 +26,19 @@ async function promptAndWaitFor(page: Page, config: PageRecordConfig, text: RegE
 }
 
 export const NEW_FINDINGS: Record<string, NewFinding> = {
+  // FINDINGS.md #35
+  'shared-state-readonly': {
+    evidence: [
+      { text: 'Sent to the agent with every run.', caption: 'the page promises the agent sees the context' },
+      { text: 'Ask the agent which workspace is active. It answers northstar', caption: 'the page promises the answer northstar' },
+    ],
+    note: [
+      "page says useagentcontext values are sent to the agent every run and it answers northstar",
+      "set workspace to northstar, asked which workspace, the agent answered with some server path and not northstar",
+      "the antigravity adapter only passes the context with experimental_app_context=true and the page never mentions it",
+      "no backend is shown at all, so the agent never gets the context",
+    ].join('\n'),
+  },
   // FINDINGS.md #47 (re-audit 2026-11-20: blocker is the missing Vue delegation log; httpx / _common are minor)
   subagents: {
     evidence: [
