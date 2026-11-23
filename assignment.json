@@ -519,14 +519,14 @@
    "child": true,
    "docPath": "shared-state/agent-readonly",
    "reachable": "sidebar",
-   "status": "❌",
+   "status": "✅",
    "findings": [
     35,
     36,
     51
    ],
    "notes": [
-    "Issue: agent never sees useAgentContext; needs experimental_app_context=True, not mentioned."
+    "Note: agent needs experimental_app_context=True to see useAgentContext; page never mentions it."
    ],
    "block": null,
    "links": [
@@ -534,7 +534,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-vue-05-SharedStateReadonly",
      "loom": "https://www.loom.com/share/c7d2d865988f4a6eaae92f78a6d24ec5",
-     "narration": "narration/scripts/ANTIGRAVITY-vue-05-SharedStateReadonly.json",
+     "narration": null,
      "filmed": "2026-11-23"
     }
    ],
