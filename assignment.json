@@ -174,9 +174,7 @@
     10,
     11
    ],
-   "notes": [
-    "Note: agent-id my-agent is never registered by the quickstart; add it in the runtime."
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {
@@ -266,9 +264,7 @@
    "findings": [
     48
    ],
-   "notes": [
-    "Note: agent-id=\"support\" is never registered on the page."
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {
@@ -299,9 +295,7 @@
     17,
     49
    ],
-   "notes": [
-    "Note: server.ts leaves agent and verifyAppSession undefined; my-agent never registered."
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {
@@ -425,9 +419,7 @@
     23,
     24
    ],
-   "notes": [
-    "Note: runtime snippet leaves agent undefined; MCP url is a placeholder."
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {
@@ -460,9 +452,7 @@
     27,
     51
    ],
-   "notes": [
-    "Note: build() in the agent snippet is never defined."
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {
@@ -558,9 +548,7 @@
     39,
     40
    ],
-   "notes": [
-    "Note: agents._common never shown; prompt says book_call but the tool is schedule_meeting."
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {
@@ -686,9 +674,7 @@
    "findings": [
     46
    ],
-   "notes": [
-    "Note: searchOrders() is never defined (your own API)."
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {
