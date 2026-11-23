@@ -752,7 +752,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "excluded": "Backend section of the docs sidebar (owner 2026-11-23: Backend pages out of scope)"
   }
  ],
  "quickstartBlocked": "The Vue quickstart only wires BuiltInAgent; no step connects an Antigravity agent."
