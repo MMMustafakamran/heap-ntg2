@@ -53,7 +53,8 @@ def set_steps(steps: list[dict]) -> str:
 agent = AntigravityAgent(
     model="gemini-2.5-flash",
     api_key=os.environ["GEMINI_API_KEY"],
-    system_instructions=READ_WRITE_PROMPT,
+    system_instructions=READ_WRITE_PROMPT
+    + " Call get_app_context to read the app context (for example the active workspace) before answering questions about it.",  # HARNESS: adapter needs the model told to call get_app_context; Agent Read-Only Context page never says so (FINDINGS.md #35, minor)
     tools=[set_notes],
     experimental_app_state=True,
     experimental_app_context=True,  # HARNESS: Agent Read-Only Context page never mentions it; without it useAgentContext never reaches the agent (FINDINGS.md #35, minor)

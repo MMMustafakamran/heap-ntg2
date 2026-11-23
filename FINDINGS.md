@@ -37,7 +37,7 @@ Stack: `@copilotkit/vue`/`runtime` 1.90.0 (npm latest, CI 2026-11-23), `vue` 3.5
 - #26 Shared State: set_notes snippet uses experimental_get_state/experimental_set_state without imports
 - #27 Shared State: two separate blocks both titled src/components/SharedWorkspace.vue; the second (setTone) uses agent and WorkspaceState it never defines, merge is left to the reader
 - #30 Render agent state in your app: page has no backend code; relies on the Shared State page's agent
-- #35 Agent Read-Only Context: the agent only sees useAgentContext with experimental_app_context=True on AntigravityAgent, which the page never mentions (one-line fix, works with it; owner 2026-11-23)
+- #35 Agent Read-Only Context: the agent only sees useAgentContext with experimental_app_context=True on AntigravityAgent, plus a system prompt telling the model to call get_app_context; the page mentions neither (works with both; owner 2026-11-23)
 - #36 Agent Read-Only Context: page shows no backend code at all
 - #39 Human in the Loop: hitl.py imports agents._common.build, never published
 - #40 Human in the Loop: backend prompt names book_call, the Vue snippet registers schedule_meeting (model still called schedule_meeting)

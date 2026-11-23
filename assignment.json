@@ -526,7 +526,7 @@
     51
    ],
    "notes": [
-    "Note: agent needs experimental_app_context=True to see useAgentContext; page never mentions it."
+    "Note: needs experimental_app_context=True and a system prompt telling the model to call the context tool."
    ],
    "block": null,
    "links": [
