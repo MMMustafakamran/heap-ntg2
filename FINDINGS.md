@@ -9,6 +9,11 @@ Stack: `@copilotkit/vue`/`runtime` 1.90.0 (npm latest, CI 2026-11-23), `vue` 3.5
 - **Doc:** https://docs.copilotkit.ai/vue/google-antigravity/quickstart (the sidebar's Quickstart, `/vue/google-antigravity`, shows the same page). The only runtime is `server.ts` with `default: new BuiltInAgent({ model: "openai:gpt-6-luna", ... })`, and the callout says "If you already have a LangGraph, CrewAI, Mastra, ADK, Pydantic AI, or other agent, use your framework's quickstart for the runtime wiring so it registers your agent instead." This is that framework's quickstart.
 - **Result:** the published steps run (re-checked 2026-11-18: `npx tsx server.ts` with an OpenAI key streams a reply), but the chat talks to CopilotKit's own OpenAI agent. There is no Antigravity backend, no `pip install ag-ui-antigravity`, no `HttpAgent` and no Gemini key anywhere on the page, so a reader can't get a Vue app on an Antigravity agent. **Confirmed by harness:** `server.antigravity.ts` (HttpAgent -> own Antigravity backend) is the harness's own guess.
 
+### [Render agent state in your app](https://docs.copilotkit.ai/vue/google-antigravity/shared-state/rendering-in-app)
+**#30 The page's own test ("mark the prototype item as done") can't work: no backend code, and the Shared State agent it relies on can only write notes.**
+- **Doc:** "Ask the agent to mark the prototype item as done. The item's `data-done` changes to `true` on the canvas without a page reload." The page shows only `Canvas.vue` / `App.vue`; no agent or tool writes `items`.
+- **Result (CI 2026-11-24, 2 runs):** the canvas renders the initial title/items, but the agent answers "I couldn't mark the prototype item done because the available tools don't provide a way to edit the checklist in shared state." and `data-done` stays `false`. The only Antigravity backend in this section is the Shared State page's `set_notes` agent; a tool that updates `items` is left to guesswork.
+
 ### [Sub-Agents](https://docs.copilotkit.ai/vue/google-antigravity/multi-agent/subagents)
 **#47 the delegation-log section has no frontend code, and the only one given (Code tab / showcase) is React: no Vue version.**
 - Doc: 'Rendering a live delegation log' says "On the frontend, the delegation log is a reactive render of the `delegations` slot." with no code; the page's Code tab shows only `page.tsx` / `delegation-log.tsx` (React) and links the React showcase (showcase/integrations/google-antigravity/src/app/demos/subagents). / Result: the supervisor replies, but a Vue reader has no delegation-log component to render, so no log shows.
@@ -36,7 +41,6 @@ Stack: `@copilotkit/vue`/`runtime` 1.90.0 (npm latest, CI 2026-11-23), `vue` 3.5
 - #25 Shared State: backend snippet calls build(...) which the page never defines or imports (same as React #8)
 - #26 Shared State: set_notes snippet uses experimental_get_state/experimental_set_state without imports
 - #27 Shared State: two separate blocks both titled src/components/SharedWorkspace.vue; the second (setTone) uses agent and WorkspaceState it never defines, merge is left to the reader
-- #30 Render agent state in your app: page has no backend code; relies on the Shared State page's agent
 - #35 Agent Read-Only Context: the agent only sees useAgentContext with experimental_app_context=True on AntigravityAgent, plus a system prompt telling the model to call get_app_context; the page mentions neither (works with both; owner 2026-11-23)
 - #36 Agent Read-Only Context: page shows no backend code at all
 - #39 Human in the Loop: hitl.py imports agents._common.build, never published

@@ -26,6 +26,18 @@ async function promptAndWaitFor(page: Page, config: PageRecordConfig, text: RegE
 }
 
 export const NEW_FINDINGS: Record<string, NewFinding> = {
+  // FINDINGS.md #30 (review 2026-11-24: the page's own test fails, 2 CI runs)
+  'shared-state-rendering': {
+    evidence: [
+      { text: 'Ask the agent to mark the prototype item as done.', caption: "the page's test step needs an agent tool that writes items; none is given" },
+    ],
+    note: [
+      "page says ask the agent to mark the prototype item as done and data-done flips to true on the canvas",
+      "agent just says it has no tool to edit the checklist,item stays not done",
+      "page has no backend code at all,the shared state agent it relies on only has set_notes",
+      "nothing writes items so u have to guess the tool urself",
+    ].join('\n'),
+  },
   // FINDINGS.md #47 (re-audit 2026-11-20: blocker is the missing Vue delegation log; httpx / _common are minor)
   subagents: {
     evidence: [

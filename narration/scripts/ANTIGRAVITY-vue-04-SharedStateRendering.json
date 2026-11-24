@@ -1,0 +1,30 @@
+{
+ "clip": "ANTIGRAVITY-vue-04-SharedStateRendering",
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so this is the render agent state in your app page for Vue with Google Antigravity, and I'm reporting a problem on this page."
+  },
+  {
+   "at": "evidence",
+   "text": "So this is the problem, umm, it says ask the agent to mark the prototype item as done, but the page never gives an agent that can do that."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. The item should flip to done on the canvas, but uh, the agent says it has no tool to edit the checklist, so nothing changes."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page has no backend code, and the shared state agent it leans on can only save notes, so the items never update."
+  },
+  {
+   "at": "+",
+   "text": "Alright, that's the issue, kindly sort it out."
+  }
+ ],
+ "page": "shared-state-rendering"
+}

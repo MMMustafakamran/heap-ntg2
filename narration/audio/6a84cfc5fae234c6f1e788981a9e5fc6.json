@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the page has no backend code, and the shared state agent it leans on can only save notes, so the items never update.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 9.52,
+ "file": "6a84cfc5fae234c6f1e788981a9e5fc6.mp3",
+ "clip": "ANTIGRAVITY-vue-04-SharedStateRendering",
+ "at": "notepad"
+}

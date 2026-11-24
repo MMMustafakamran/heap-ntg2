@@ -478,19 +478,21 @@
    "child": true,
    "docPath": "shared-state/rendering-in-app",
    "reachable": "sidebar",
-   "status": "✅",
+   "status": "❌",
    "findings": [
     30,
     51
    ],
-   "notes": [],
+   "notes": [
+    "Issue: agent can't mark the item done, page gives no backend tool that writes items."
+   ],
    "block": null,
    "links": [
     {
      "text": null,
      "clip": "ANTIGRAVITY-vue-04-SharedStateRendering",
      "loom": "https://www.loom.com/share/f27dd8407f8e43dbbc65ae4968eeb183",
-     "narration": null,
+     "narration": "narration/scripts/ANTIGRAVITY-vue-04-SharedStateRendering.json",
      "filmed": "2026-11-23"
     }
    ],
