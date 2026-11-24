@@ -78,8 +78,19 @@ export const runHitlAction: PageActionHandler = async (page, config, _root, ctx)
   if (!(await promptAndWaitFor(page, config, /Pick a time/, 90000))) return ctx.fail('No time picker card showed up');
   const slot = page.getByRole('button', { name: /Tomorrow/ }).first();
   if (await slot.isVisible().catch(() => false)) {
+    const before = await page.evaluate(() => document.body.innerText.length);
     await glideClick(page, slot);
-    await sleep(8000);
+    // Review 2026-11-24: the take ended while the agent was still answering; wait for the follow-up reply to land and settle.
+    let last = before, stable = 0, grew = false;
+    for (let i = 0; i < 90 && stable < 5; i++) {
+      await sleep(1000);
+      const n = await page.evaluate(() => document.body.innerText.length).catch(() => last);
+      if (n > before + 20) grew = true;
+      stable = grew && n === last ? stable + 1 : 0;
+      last = n;
+    }
+    if (!grew) ctx.warn('No agent reply after picking a time');
+    await sleep(2000);
   }
 };
 

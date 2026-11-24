@@ -69,7 +69,7 @@ export const PAGES = definePages([
     startLine: 1,
     endLine: 56,
     extraTabs: [{ filePath: 'my-copilot-app/src/pages/RenderingInAppApp.vue', startLine: 1, endLine: 14 }],
-    prompt: 'Please remember that the launch date is Friday.',
+    prompt: 'Mark the prototype item as done.', // review 2026-11-24: the doc's own suggested prompt (canvas renders title/items only)
   },
   {
     id: 'shared-state-readonly',
@@ -221,6 +221,6 @@ export const PAGES = definePages([
     prompt: 'Use the searchOrders tool to find my open orders.', waitAfterPromptMs: 5000 },
   { id: 'subagents', name: 'Sub-Agents (Vue)', videoName: 'SubAgents', docPath: 'multi-agent/subagents', route: '/subagents',
     ideFile: 'backend/agents/subagents.py', startLine: 1, endLine: 112,
-    extraTabs: [{ filePath: 'my-copilot-app/src/pages/SubagentsApp.vue', startLine: 1, endLine: 11 }],
+    extraTabs: [{ filePath: 'backend/agents/_common.py', startLine: 1, endLine: 20, addedText: '# HARNESS: copied verbatim from showcase/integrations/google-antigravity (CopilotKit 4f0e86d). The subagents page imports agents._common but never publishes it.' }, { filePath: 'my-copilot-app/src/pages/SubagentsApp.vue', startLine: 1, endLine: 11 }],
     prompt: 'Write a short paragraph about why the sky is blue.', waitAfterPromptMs: 10000 },
 ]);

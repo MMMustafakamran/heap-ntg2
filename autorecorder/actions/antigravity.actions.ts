@@ -28,7 +28,7 @@ import { registerDocEvidence } from '../core/doc-evidence';
 export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
   // FINDINGS.md #9 (texts checked on the rendered page 2026-11-18)
   quickstart: [
-    { text: "use your framework's quickstart for the runtime wiring so it registers your agent instead", caption: 'The Antigravity Vue quickstart sends agent owners to their framework quickstart, i.e. this page' },
+    { text: "use your framework's quickstart for the runtime wiring so", caption: 'The Antigravity Vue quickstart sends agent owners to their framework quickstart, i.e. this page' },
     { text: 'default: new BuiltInAgent({', caption: 'The only runtime on the page registers BuiltInAgent (OpenAI), no Antigravity agent' },
   ],
 };

@@ -14,6 +14,10 @@
    "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
+   "at": "+",
+   "text": "This part wasn't on the page, the agents common file the sub agents code imports, so I added it from the showcase."
+  },
+  {
    "at": "demo",
    "text": "Moving on to the demo. It should show a delegation log, the supervisor replies, but uh, there's no log anywhere."
   },
