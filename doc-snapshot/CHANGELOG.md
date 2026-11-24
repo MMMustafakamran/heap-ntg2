@@ -59,3 +59,10 @@ What each `drift.mjs --sync` took into the snapshot (newest first).
 - webmcp: MEDIUM structure (+17 / -17)
 - multi-agent/subagents: HIGH code, structure (+19 / -29)
 - inspector: LOW prose (+26 / -29)
+
+## 2026-11-24 (build-with-agents, community-frameworks, learning, programmatic-control)
+
+- programmatic-control: HIGH code, structure (+10 / -22)
+- learning: HIGH code, install, structure (+41 / -38)
+- community-frameworks: LOW prose (+1 / -2)
+- build-with-agents: HIGH code, install, structure (+86 / -81)
