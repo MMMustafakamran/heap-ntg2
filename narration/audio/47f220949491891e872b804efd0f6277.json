@@ -1,0 +1,9 @@
+{
+ "text": "Moving on to the demo. The prototype item should flip to done on the canvas, but uh, whatever the agent replies, the item never changes.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 9.52,
+ "file": "47f220949491891e872b804efd0f6277.mp3",
+ "clip": "ANTIGRAVITY-vue-04-SharedStateRendering",
+ "at": "demo"
+}

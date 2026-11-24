@@ -12,7 +12,7 @@ Stack: `@copilotkit/vue`/`runtime` 1.90.0 (npm latest, CI 2026-11-23), `vue` 3.5
 ### [Render agent state in your app](https://docs.copilotkit.ai/vue/google-antigravity/shared-state/rendering-in-app)
 **#30 The page's own test ("mark the prototype item as done") can't work: no backend code, and the Shared State agent it relies on can only write notes.**
 - **Doc:** "Ask the agent to mark the prototype item as done. The item's `data-done` changes to `true` on the canvas without a page reload." The page shows only `Canvas.vue` / `App.vue`; no agent or tool writes `items`.
-- **Result (CI 2026-11-24, 2 runs):** the canvas renders the initial title/items, but the agent answers "I couldn't mark the prototype item done because the available tools don't provide a way to edit the checklist in shared state." and `data-done` stays `false`. The only Antigravity backend in this section is the Shared State page's `set_notes` agent; a tool that updates `items` is left to guesswork.
+- **Result (CI 2026-11-24):** the canvas renders the initial title/items, but the agent either says it has no tool to edit the checklist or claims "The \"Build a prototype\" item has been marked as done.", and `data-done` stays `false` (3 CI runs). The only Antigravity backend in this section is the Shared State page's `set_notes` agent; a tool that updates `items` is left to guesswork.
 
 ### [Sub-Agents](https://docs.copilotkit.ai/vue/google-antigravity/multi-agent/subagents)
 **#47 the delegation-log section has no frontend code, and the only one given (Code tab / showcase) is React: no Vue version.**

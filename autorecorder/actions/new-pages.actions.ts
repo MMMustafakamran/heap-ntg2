@@ -31,9 +31,19 @@ export const NEW_FINDINGS: Record<string, NewFinding> = {
     evidence: [
       { text: 'Ask the agent to mark the prototype item as done.', caption: "the page's test step needs an agent tool that writes items; none is given" },
     ],
+    // The doc's check is data-done on the item (not styled, so read it): the reply alone can claim success.
+    demo: async (page, config, root, ctx) => {
+      await runStandardAction(page, config, root, ctx);
+      await sleep(3000);
+      const item = page.locator('li', { hasText: 'Build a prototype' }).first();
+      const done = await item.getAttribute('data-done').catch(() => null);
+      void checkpoint('canvas', 'prototype item data-done == true', () => `data-done=${done}`, { ok: () => done === 'true' });
+      await glideTo(page, item, 2500).catch(() => {});
+      if (done !== 'true') ctx.fail(`prototype item still data-done=${done} after the agent turn`);
+    },
     note: [
       "page says ask the agent to mark the prototype item as done and data-done flips to true on the canvas",
-      "agent just says it has no tool to edit the checklist,item stays not done",
+      "agent answers but the prototype item never flips,data-done stays false",
       "page has no backend code at all,the shared state agent it relies on only has set_notes",
       "nothing writes items so u have to guess the tool urself",
     ].join('\n'),

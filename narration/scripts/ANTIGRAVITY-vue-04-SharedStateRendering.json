@@ -15,7 +15,7 @@
   },
   {
    "at": "demo",
-   "text": "Moving on to the demo. The item should flip to done on the canvas, but uh, the agent says it has no tool to edit the checklist, so nothing changes."
+   "text": "Moving on to the demo. The prototype item should flip to done on the canvas, but uh, whatever the agent replies, the item never changes."
   },
   {
    "at": "notepad",
