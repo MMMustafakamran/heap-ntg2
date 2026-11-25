@@ -1,4 +1,4 @@
-# HARNESS: copied verbatim from showcase/integrations/google-antigravity (CopilotKit 4f0e86d). The subagents page imports agents._common but never publishes it.
+# ADDED: copied verbatim from showcase/integrations/google-antigravity (CopilotKit 4f0e86d). The subagents page imports agents._common but never publishes it.
 """Shared wiring for every demo agent in this package.
 
 Mirrors the AG-UI branch's ``examples/server/api/_common.py``: one workspace,

@@ -14,8 +14,12 @@
    "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
-   "at": "+",
-   "text": "This part wasn't on the page, the agents common file the sub agents code imports, so I added it from the showcase."
+   "at": "added",
+   "text": "This part, the agents common file the sub agents code imports, wasn't on the page, so I added it from the showcase."
+  },
+  {
+   "at": "added#2",
+   "text": "And this part, umm, the Vue page itself, the doc gives no Vue code for it, so I just put in a plain chat."
   },
   {
    "at": "demo",

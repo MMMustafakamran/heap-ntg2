@@ -1,3 +1,4 @@
+import { expectUiFor } from '../core/ui-log';
 /**
  * Pages of https://docs.copilotkit.ai/vue/google-antigravity under test. The Vue app is a single
  * Vite app with no router, so both clips drive http://localhost:5140/. Its runtime is the harness's
@@ -221,6 +222,7 @@ export const PAGES = definePages([
     prompt: 'Use the searchOrders tool to find my open orders.', waitAfterPromptMs: 5000 },
   { id: 'subagents', name: 'Sub-Agents (Vue)', videoName: 'SubAgents', docPath: 'multi-agent/subagents', route: '/subagents',
     ideFile: 'backend/agents/subagents.py', startLine: 1, endLine: 112,
-    extraTabs: [{ filePath: 'backend/agents/_common.py', startLine: 1, endLine: 20, addedText: '# HARNESS: copied verbatim from showcase/integrations/google-antigravity (CopilotKit 4f0e86d). The subagents page imports agents._common but never publishes it.' }, { filePath: 'my-copilot-app/src/pages/SubagentsApp.vue', startLine: 1, endLine: 11 }],
-    prompt: 'Write a short paragraph about why the sky is blue.', waitAfterPromptMs: 10000 },
+    extraTabs: [{ filePath: 'backend/agents/_common.py', startLine: 1, endLine: 20 }, { filePath: 'my-copilot-app/src/pages/SubagentsApp.vue', startLine: 1, endLine: 11 }],
+    prompt: 'Write a short paragraph about why the sky is blue.', waitAfterPromptMs: 10000,
+    expectUi: expectUiFor('sub-agents') },
 ]);
